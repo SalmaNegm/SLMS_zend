@@ -1,0 +1,13 @@
+<h1>material Listing </h1>
+<br /><br />
+<?php
+	echo "<table class='table table-striped'><tr><th>ID</th><th>material</th><th>date</th><th>action</th></tr>";
+	foreach ($this->material as $material){
+	echo "<tr>";
+	echo "<td>".$material['id'].'</td>';
+	echo "<td>".$material['name'].'</td>';
+	echo "<td>".$material['upload_date'].'</td>';
+	echo "<td><a href='".$this->baseUrl()."/material/download/id/".$material['id']."'>  download  </a>". "<a href='".$this->baseUrl()."/material/delete/id/".$material['id']."'>  Delete  </a> </td>";
+	echo "</tr>";
+	}
+	echo "</table>";
