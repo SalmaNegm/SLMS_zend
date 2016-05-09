@@ -1,0 +1,14 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Types</b> and script/action name <b>index</b></p>
+</div>
+<?php
+	foreach ($this->MaterialType as $MaterialType){
+	echo "<label> ID: </label>".$MaterialType['id'].'<br />';
+	echo "<label> name: </label>".$MaterialType['name'].'<br />';
+	echo "<a href='".$this->baseUrl()."/types/edit/id/".$MaterialType['id']."'> Edit </a> "."<a href='".$this->baseUrl()."/types/delete/id/".$MaterialType['id']."'> Delete </a> <br />";
+	echo "<a href='".$this->baseUrl()."/types/add'> Add </a>";
+	echo str_repeat('*', 100).'<br />';
+	}
+
+?>

@@ -1,0 +1,14 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Comments</b> and script/action name <b>index</b></p>
+</div>
+ <?php
+	foreach ($this->comments as $comment){
+	echo "<label> ID: </label>".$comment['id'].'<br />';
+	echo "<label> text: </label>".$comment['content'].'<br />';
+	echo "<a href='".$this->baseUrl()."/comments/edit/id/".$comment['id']."'> Edit </a> "."<a href='".$this->baseUrl()."/comments/delete/id/".$comment['id']."'> Delete </a> <br />";
+	echo "<a href='".$this->baseUrl()."/comments/add'> Add </a>";
+	echo str_repeat('*', 100).'<br />';
+	}
+
+?>
