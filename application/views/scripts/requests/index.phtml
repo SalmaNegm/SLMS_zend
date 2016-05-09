@@ -1,0 +1,15 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Requests</b> and script/action name <b>index</b></p>
+	<h3> List all requests </h3>
+</div>
+
+<?php
+	foreach ($this->requests as $req){
+	echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
+	echo "<label> <b> RequestContent: </b> </label>".$req['content'].'<br />';
+	
+	
+	}
+
+?>
