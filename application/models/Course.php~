@@ -55,6 +55,7 @@ class Application_Model_Course extends Zend_Db_Table_Abstract
 		$category = $categoryRowSet->current();
 		 
 		$courses = $category->findDependentRowset('Application_Model_Course')->toArray();
+//--
 		return $courses;
 	}
 
