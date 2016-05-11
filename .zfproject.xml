@@ -17,15 +17,25 @@
         <controllerFile controllerName="Types">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="Courses">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
-      <formsDirectory enabled="false"/>
-      <layoutsDirectory enabled="false"/>
+      <formsDirectory enabled="false">
+        <formFile formName="Course"/>
+      </formsDirectory>
+      <layoutsDirectory>
+        <layoutScriptsDirectory>
+          <layoutScriptFile layoutName="layout"/>
+        </layoutScriptsDirectory>
+      </layoutsDirectory>
       <modelsDirectory>
         <modelFile modelName="Course"/>
         <dbTableDirectory>
           <dbTableFile dbTableName="Comment"/>
           <dbTableFile dbTableName="Type"/>
         </dbTableDirectory>
+        <modelFile modelName="CourseMaterialType"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
@@ -41,6 +51,9 @@
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Types">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Courses">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
