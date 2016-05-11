@@ -1,0 +1,90 @@
+
+	<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+	<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/font-awesome.css">
+	<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_style.css">
+	<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_misc.css">
+	<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/flexslider.css">
+	<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/testimonails-slider.css">
+	<script src="<?=$this->baseUrl()?>/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		
+		<!-- *************************CATEGORY DATA*************************** -->
+	<div id="product-post">
+    	<div class="container">
+			<div class="row">
+		        <div class="col-md-12">
+		            <div class="col-sm-offset-1">
+		                <h1><?=$this->category['name']?></h1> 
+		            </div>
+		        </div>
+		    </div>
+		    <div id="single-blog" class="page-section first-section col-sm-offset-1"">
+                <div class="container">
+                    <div class="row">
+                        <div class="product-item col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="product-content">
+                                        <!-- <div class="product-title">
+                                            <h3><?=$this->category['name']?></h3>
+                                            <span class="subtitle">4 comments</span>
+                                        </div> -->
+                                        <p><?=$this->category['description']?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+		<!-- *************************END CATEGORY DATA************************** -->
+		<!-- ***************************COURSES LIST***************************** -->
+
+        	<div id="latest-blog">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                                <h2>Courses List</h2>
+                                <img src="<?= $this->baseUrl() ?>/images/temp/under-heading.png" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">    
+            		<?php
+            			foreach ($this->courses as $course) 
+            			{
+            		?>
+            				<div class="col-md-4 col-sm-6">
+            		            <div class="blog-post">
+            		                <div class="blog-thumb">
+            		                    <img width='200px' height="300px" src="<?= $this->baseUrl() ?>/../images/courses/<?=$course['image']?>" alt="" />
+            		                </div>
+            		                <div class="blog-content">
+            		                    <div class="content-show">
+            		                        <h4><a href="single-post.html"><?= $course['name'] ?></a></h4>
+            		                        <!-- <span>29 Sep 2084</span> -->
+            		                    </div>
+            		                    <div class="content-hide">
+            		                        <p><?= $course['description'] ?></p>
+            		                    </div>
+            		                </div>
+            		            </div>
+            		        </div>
+            		<?php
+            			}
+            		?>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+
+		<!-- ***************************END COURSES LIST*************************** -->
+
+
+<script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery.gmap3.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/plugins.js"></script>
+<script src="<?=$this->baseUrl()?>/js/main.js"></script> <!-- images motion -->
