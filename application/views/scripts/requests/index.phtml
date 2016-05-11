@@ -5,11 +5,39 @@
 </div>
 
 <?php
-	foreach ($this->requests as $req){
+	foreach ($this->requests as $req)
+	{
+		if($req['is_read'] == 0)
+		{
+			$mark = "Mark ";
+		}
+		else
+		{
+			$mark = "Unmark";
+		}
+
+
+		
 	echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
 	echo "<label> <b> RequestContent: </b> </label>".$req['content'].'<br />';
+
 	
+	echo "<a href='".$this->baseUrl()."/requests/edit/id/".$req['id']."'> Edit </a> "."<a href='".$this->baseUrl()."/requests/delete/id/".$req['id']."'> Delete </a> <br />";
+	echo "<a href='".$this->baseUrl()."/requests/mark/id/".$req['id']."'> ".$mark."</a> <br />";
+
+	// echo "<label> <b> User: </b> </label>".$req['user_id'].'<br />';
+	echo "<label> <b> From : </b> </label>";
+	// foreach ($this->uname as  $value) 
+	// 	{
+	// 		echo $value;
+	// 	}
 	
+	echo "<hr>";
+	
+		
 	}
+	// var_dump($this->uname);
+	echo "<h3> New Request</h3>";
+	echo "<a href='".$this->baseUrl()."/requests/add/'> NewRequest </a>";
 
 ?>

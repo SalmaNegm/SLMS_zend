@@ -21,24 +21,24 @@ class Application_Model_DbTable_Request extends Zend_Db_Table_Abstract
 
 	}
 
-	function getRequestByMatId($id)
+	function getRequestByuserId($id)
 	{
-		return $this->fetchAll($this->select()->where('material_type_id=?',$id));
+		return $this->fetchAll($this->select()->where('user_id=?',$id));
 
 	}
 
 	function isRequestRead()
 	{
-		return $this->fetchAll($this->select()->where('is_read=1'));
+		return $this->fetchAll($this->select()->where('is_read=0'));
 	}
 
 
-	function addRequest($request)
+	function addRequest($request,$user_id)
 	{
 
 		$row = $this->createRow();
 		$row->content = $request['content'];
-		$row->user_id = 1;
+		$row->user_id = $user_id;
 
 		return $row->save();
 	}

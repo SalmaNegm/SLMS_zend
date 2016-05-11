@@ -1,0 +1,32 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Requests</b> and script/action name <b>list</b></p>
+	<h2>List Unread requests </h2>
+</div>
+
+<?php
+	foreach ($this->requests as $req)
+	{
+		
+
+
+		
+	echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
+	echo "<label> <b> RequestContent: </b> </label>".$req['content'].'<br />';
+
+
+
+	// echo "<label> <b> User: </b> </label>".$req['user_id'].'<br />';
+	// echo "<label> <b> From : </b> </label>";
+	// // foreach ($this->uname as  $value) 
+	// // 	{
+	// // 		echo $value;
+	// // 	}
+	
+	echo "<hr>";
+	
+		
+	}
+	
+
+?>

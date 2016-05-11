@@ -14,7 +14,7 @@ class RequestsController extends Zend_Controller_Action
         if(!$authorization->hasIdentity()) 
         {
             
-            $this->redirect('users/login');
+            $this->redirect('auth/login');
         }
 
      //    $data = Zend_Auth::getInstance()->getStorage()->read();

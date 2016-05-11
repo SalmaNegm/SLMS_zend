@@ -29,7 +29,7 @@ class UsersController extends Zend_Controller_Action
             $password = $this->getRequest()->getParam('password');
              // get the default db adapter
             $db = Zend_Db_Table::getDefaultAdapter();
-            $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'users', 'name', 'password');
+            $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'users', 'username', 'password');
             //set the email and password
             $authAdapter->setIdentity($username);
             $authAdapter->setCredential(md5($password));
@@ -37,7 +37,7 @@ class UsersController extends Zend_Controller_Action
             if ($result->isValid()) {
                 $auth = Zend_Auth::getInstance();
                 $storage = $auth->getStorage();
-                $storage->write($authAdapter->getResultRowObject(array('id', 'name','type')));
+                $storage->write($authAdapter->getResultRowObject(array('id', 'username')));
                 // var_dump($storage->read()->id);
                 $this->redirect('home/index');
             } else {
