@@ -7,6 +7,11 @@ class UsersController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_User();
+         $this->model = new Application_Model_DbTable_Post();
+           $authorization = Zend_Auth::getInstance();
+           if (!$authorization->hasIdentity()) {
+               $this->redirect('users/login');
+           }
 
     }
 
