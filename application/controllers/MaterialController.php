@@ -3,10 +3,12 @@
 class MaterialController extends Zend_Controller_Action
 {
     private $model;
+    private $modelcomment = null;
     public function init()
     {
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_Material();
+        $this->modelcomment = new Application_Model_DbTable_Comment();
     }
 
     public function indexAction()
@@ -107,6 +109,79 @@ class MaterialController extends Zend_Controller_Action
     $this->view->form = $form;
     
     }
+    public function singleAction()
+{
+  $course_id=1;
+  $material_type_id=3;
+  $material_id=1;
+  $this->view->material = $this->model->getMaterialByCourseMaterial($course_id,$material_type_id);
+  $form = new Application_Form_Comment();
+  if($this->getRequest()->isPost()){
+     if($form->isValid($this->getRequest()->getParams())){
+        $data = $form->getValues();
+        if ($this->modelcomment->addComment($data,$material_id)){
+                    // $this->redirect('comments/index');
+        }
+    }
+}
+
+$this->view->form = $form;
+$comments=$this->modelcomment->listCommentsByMaterial($material_id);
+
+$this->view->comment=$comments;
+
+}
+
+public function viewAction()
+{
+        // action body
+    $material_id = $this->getRequest()->getParam('id');
+    $material=$this->model->getMaterialById($material_id);
+    $file=$material[0]['name'];
+    var_dump($file);
+
+        // var_dump($material);
+    $this->_helper->layout->disableLayout();
+    $path='/var/www/html/SLMS_zend/SLMS_zend/public/upload/material/'.$file;
+        // var_dump($path);
+        // die();
+    $file_ex= explode(".",$material[0]['name']);
+    $ex=$file_ex[1];
+    $name=$file_ex[0];
+
+    switch ($ex) {
+        case 'jpg':
+                # code...
+            $this->view->material = $this->model->getMaterialById($material_id);
+        break;
+        case 'pdf':
+            header('Content-type:application/pdf');
+            header('Content-Disposition:inline;filname=filename.pdf');
+            header('Cache-control:private,max-age=0,must-revalidate');
+            header('progma:public');
+            ini_set('zlib.output_compression','0');
+            echo file_get_contents($path);
+        break;
+        case 'mp4':
+            $this->redirect('material/video');
+        break;    
+        default:
+                # code...
+        break;
+    }
+    
+}
+
+public function videoAction()
+{
+        // action body
+    $material_id=1;
+    $material=$this->model->getMaterialById($material_id);
+    $file=$material[0]['name'];
+    $path='/var/www/html/SLMS_zend/SLMS_zend/public/upload/material/'.$file;
+    $this->view->video=$path;
+}
         
         
 }
+

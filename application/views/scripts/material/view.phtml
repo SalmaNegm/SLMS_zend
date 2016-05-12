@@ -1,0 +1,13 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Material</b> and script/action name <b>view</b></p>
+</div>
+<?php
+foreach ($this->material as $material){
+	echo "<label> name: </label>".$material['id'].'<br />';
+	echo "<label> name: </label>".$material['name'].'<br />';
+	echo "<img src='".$this->baseUrl()."/upload/material/".$material['name']."'/><br>";
+}
+
+
+?>	
