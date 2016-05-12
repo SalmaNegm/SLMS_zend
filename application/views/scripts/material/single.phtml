@@ -1,0 +1,31 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Material</b> and script/action name <b>single</b></p>
+</div>
+<?php
+foreach ($this->material as $material){
+	$material['no_downloads']+=1;
+	echo "<label> ID: </label>".$material['id'].'<br/>';
+	echo "<label> name: </label>".$material['name'].'<br/>';
+	echo "<label> Decription: </label>".$material['description'].'<br />';
+	echo "<label> no_download: </label>".$material['no_downloads'].'<br />';
+
+	if ($this->material['is_download']=1) {
+		echo "<a href='".$this->baseUrl()."/material/download'> Download </a>";
+		
+	}
+	echo "<a href='".$this->baseUrl()."/material/view/id/".$material['id']."'> View </a> ";
+	
+
+}
+echo "<h3>Comments</h3>";
+foreach ($this->comment as $comments){
+	echo "<label> text: </label>".$comments['content'].' publish at'.$comments['publish_date'].'</br>';
+	echo "<a href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."'> Edit </a> "."<a href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."'> Delete </a> <br />";
+
+}
+echo"<h2>Add Comment</h2>";
+echo $this->form;
+
+?>
+	
