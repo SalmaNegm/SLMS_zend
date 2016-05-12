@@ -10,12 +10,14 @@ class RequestsController extends Zend_Controller_Action
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_Request();
         $this->user_model = new Application_Model_DbTable_User();
-        $authorization =Zend_Auth::getInstance();
-        if(!$authorization->hasIdentity()) 
-        {
+        $this->layout= $this->_helper->layout();
+        // $authorization =Zend_Auth::getInstance();
+        // if(!$authorization->hasIdentity()) 
+        // {
             
-            $this->redirect('auth/login');
-        }
+        //     $this->redirect('users/login');
+        // }
+
 
      //    $data = Zend_Auth::getInstance()->getStorage()->read();
      // 	$is_admin = $data->type;
@@ -69,6 +71,7 @@ class RequestsController extends Zend_Controller_Action
 
     public function addAction()
     {
+        $this->layout->setlayout('admin');
         $form = new Application_Form_Request();
         $data = Zend_Auth::getInstance()->getStorage()->read();
         $user_id = $data->id;

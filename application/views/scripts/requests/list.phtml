@@ -1,18 +1,31 @@
+
+<link rel="stylesheet" type="text/css" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+
+
+<!-- Custom CSS -->
+    <link href="<?=$this->baseUrl()?>/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="<?=$this->baseUrl()?>/css/morris.css" rel="stylesheet">
+
+
 <br /><br />
 <div id="view-content">
-	<p>View script for controller <b>Requests</b> and script/action name <b>list</b></p>
-	<h2>List Unread requests </h2>
+	<!-- <p>View script for controller <b>Requests</b> and script/action name <b>list</b></p> -->
+	<h2> <b> List all unread requests :  <b> </h2>
 </div>
 
 <?php
+
+	echo "<a href='".$this->baseUrl()."/requests/index'> list all requests </a><br>";
 	foreach ($this->requests as $req)
 	{
 		
 
 
 		
-	echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
-	echo "<label> <b> RequestContent: </b> </label>".$req['content'].'<br />';
+	// echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
+	echo "<label> <b> RequestContent: </b> </label></br>".$req['content'].'<br />';
 
 
 
@@ -24,9 +37,22 @@
 	// // 	}
 	
 	echo "<hr>";
+
 	
 		
 	}
+	echo "<h3> Add new material and course  : </h3>";
+	echo "<a href='".$this->baseUrl()."/material/upload/'> Newmaterial </a>";
+	echo "<a href='".$this->baseUrl()."/courses/crud/'> Newcourse </a>";
+
+	// echo $this->material;
+
 	
 
 ?>
+
+
+<script src="<?=$this->baseUrl()?>/js/jquery.js"></script>
+    <script src="<?=$this->baseUrl()?>/js/raphael.min.js"></script>
+    <script src="<?=$this->baseUrl()?>/js/morris.min.js"></script>
+    <script src="<?=$this->baseUrl()?>/js/morris-data.js"></script>
