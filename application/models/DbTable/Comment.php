@@ -25,7 +25,9 @@ class Application_Model_DbTable_Comment extends Zend_Db_Table_Abstract
 	function getCommentById($id){
 		return $this->find($id)->toArray();
 	}
-
+	function listCommentsByMaterial($material_id){
+		return $this->fetchAll($this->select()->where('material_id=?',$material_id));
+	}
 
 }
 
