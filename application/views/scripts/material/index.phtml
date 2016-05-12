@@ -1,10 +1,35 @@
-<?php
-	// foreach ($this->comments as $comment){
-	// echo "<label> ID: </label>".$comment['id'].'<br />';
-	// echo "<label> text: </label>".$comment['text'].'<br />';
-	// echo "<a href='".$this->baseUrl()."/comments/edit/id/".$comment['id']."'> Edit </a> "."<a href='".$this->baseUrl()."/comments/delete/id/".$comment['id']."'> Delete </a> <br />";
-	// echo str_repeat('*', 100).'<br />';
-	// }
-echo "hello maaterials";
+<link rel="stylesheet" type="text/css" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+<!-- Custom CSS -->
+<link href="<?=$this->baseUrl()?>/css/sb-admin.css" rel="stylesheet">
 
-?>
+    <!-- Morris Charts CSS -->
+    <link href="<?=$this->baseUrl()?>/css/morris.css" rel="stylesheet"> 
+
+    <h1>Materials Listing </h1>
+<br /><br />
+<div class="col-sm-offset-1 ">
+<?php
+	echo "<table class='table table-striped'><tr><th>material</th><th>date</th><th>download</th><th>show</th><th>no_downloads</th></th><th colspan='2'>action</th></tr>";
+	foreach ($this->material as $material){
+	echo "<tr>";
+	// echo "<td>".$material['id'].'</td>';
+	echo "<td>".$material['name'].'</td>';
+	echo "<td>".$material['upload_date'].'</td>';
+	echo "<td><input type='checkbox'".(($material['is_download'])? "checked=checked" : "")." name=".$material['id']. " class='is_download'  id ='is_download' value=".$material['is_download']."  ></td>";
+	echo "<td><input type='checkbox'".(($material['is_show'])? "checked=checked" : "")." name=".$material['id']. " class='is_show' id='is_show' value=".$material['is_show']."  ></td>";
+	echo "<td>".$material['no_downloads'].'</td>';
+	echo "<td><a class='btn btn-success' href='".$this->baseUrl()."/material/download/id/".$material['id']."'>  download  </a>". "<a class='btn btn-danger' href='".$this->baseUrl()."/material/delete/id/".$material['id']."'>  Delete  </a> </td>";
+	echo "</tr>";
+	}
+	echo "</table><br/>";
+	echo "<a class='btn btn-success' href='".$this->baseUrl()."/material/upload'>  upload  </a>";
+
+	?>
+	</div>
+<!-- echo "hello maaterials"; -->
+<script src="<?=$this->baseUrl()?>/js/jquery.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery.query-2.1.7.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/material.js"></script>
+
+

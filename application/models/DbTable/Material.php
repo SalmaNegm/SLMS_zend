@@ -18,8 +18,8 @@ class Application_Model_DbTable_Material extends Zend_Db_Table_Abstract
 	$row->is_show =$data['is_show'];
 	$row->no_downloads =0;
 	$row->upload_date=new Zend_Db_Expr('NOW()');
-	$row->material_type_id=1;
-	$row->course_id=1;
+	$row->material_type_id=$data['type_id'];
+	$row->course_id=$data['course_id'];
 	return $row->save();
 	}
 	function listMaterial(){
@@ -31,7 +31,10 @@ class Application_Model_DbTable_Material extends Zend_Db_Table_Abstract
 	function getMaterialById($id){
 		return $this->find($id)->toArray();
 	}
-	function editMaterial($id,$material){
+	function editMaterial($id,$download,$action){
+		// as action is column name in db
+		// $material=array('is_download'=>$download);
+		$material=array($action=>$download);
 		$this->update($material,"id=$id");
 	}
 	

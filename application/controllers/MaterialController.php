@@ -11,12 +11,7 @@ class MaterialController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // header('Content-type: application/pdf');
-        // header("Content-Disposition: attachment; filename=''"); 
-        // readfile('/var/www/html/site/public/upload/material/ZF_SLMS_P02.pdf');
-        // $this->view->layout()->disableLayout();
-        // $this->_helper->viewRender->setNoRender(true); 
-
+        $this->view->material = $this->model->listMaterial();
     }
     public function downloadAction()
     {
@@ -25,7 +20,7 @@ class MaterialController extends Zend_Controller_Action
         $file_ex= explode(".",$material[0]['name']);
         header('Content-type: application/'.$file_ex[1]);
         header("Content-Disposition: attachment; filename='".$material[0]['name']."'"); 
-        readfile('/var/www/html/site/public/upload/material/'.$material[0]['name']);
+        readfile('/var/www/html/SLMS_zend/public/upload/material/'.$material[0]['name']);
         $this->view->layout()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
 
@@ -38,8 +33,26 @@ class MaterialController extends Zend_Controller_Action
     {
         $id = $this->getRequest()->getParam('id');
         if($this->model-> deleteMaterial($id))
-            $this->redirect('material/list');
+            $this->redirect('material/index');
     }
+    public function editAction()
+    {
+        // $this->_helper->layout()->disableLayout(); 
+        // $this->_helper->viewRenderer->setNoRender(true);
+        $id = $this->getRequest()->getParam('id');
+        $column=$this->getRequest()->getParam('col');
+        $material= $this->model->getMaterialById($id);
+        $download=$material[0][$column];
+        if($download == 0)
+        {
+            $download = 1;
+        }
+        else{
+            $download=0;
+        }
+        $this->model->editMaterial($id,$download,$column);   
+            $this->redirect('material/list');
+        }
     public function uploadAction()
     {
         $form = new Application_Form_Material();
