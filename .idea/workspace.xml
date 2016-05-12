@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08fdbeca-2bd2-4aac-a610-9c8ee8d73351" name="Default" comment="-admin can CRUD the courses:&#10;    *future modifications:&#10;        --when a course is updayed or deleted the old image must be deleted too&#10;        --available categories need to be displayed from the database ... it's ststic until now for testing only&#10;        -- course name need to be unique&#10;        -- need to add AJAX to delete operation&#10;        &#10;-single category page : front-end&#10;   *future modifications:&#10;       --link courses to the single course page&#10;       &#10;- layout:&#10;    * future modification:&#10;      -- css and js files of both layouts need to be separated &#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="08fdbeca-2bd2-4aac-a610-9c8ee8d73351" name="Default" comment="-admin can CRUD the courses:&#10;    *future modifications:&#10;        --when a course is updayed or deleted the old image must be deleted too&#10;        --available categories need to be displayed from the database ... it's ststic until now for testing only&#10;        -- course name need to be unique&#10;        -- need to add AJAX to delete operation&#10;        &#10;-single category page : front-end&#10;   *future modifications:&#10;       --link courses to the single course page&#10;       &#10;- layout:&#10;    * future modification:&#10;      -- css and js files of both layouts need to be separated &#10;" />
     <ignored path="SLMS_project.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -252,6 +250,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
