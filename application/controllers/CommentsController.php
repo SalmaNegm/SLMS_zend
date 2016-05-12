@@ -9,6 +9,7 @@ class CommentsController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_Comment();
+         $this->layout = $this->_helper->layout();
     }
 
     public function indexAction()
@@ -28,7 +29,8 @@ class CommentsController extends Zend_Controller_Action
 			if($form->isValid($this->getRequest()->getParams())){
 				$data = $form->getValues();
 				if ($this->model->addComment($data)){
-					$this->redirect('comments/index');
+
+					$this->redirect('material/single');
                 }
 			}
 
@@ -39,13 +41,15 @@ class CommentsController extends Zend_Controller_Action
     public function deleteAction()
     {
         // action body
+        $this->layout->setlayout('client');
         $id = $this->getRequest()->getParam('id');
 		if($this->model->deleteComment($id))
-			$this->redirect('comments/index');
+			$this->redirect('material/single');
     }
 
     public function editAction()
     {
+        $this->layout->setlayout('client');
        $id = $this->getRequest()->getParam('id');
 		$comment = $this->model->getCommentById($id);
 		$form = new Application_Form_Comment();
@@ -55,7 +59,7 @@ class CommentsController extends Zend_Controller_Action
 				$data = $form->getValues();
 
 				$this->model->editComment($id,$data);	
-                $this->redirect('comments/index');
+                $this->redirect('material/single');
 
 			}
 		}
