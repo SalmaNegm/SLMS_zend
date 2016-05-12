@@ -21,14 +21,20 @@ class Application_Form_Course extends Zend_Form
         $category_id->setLabel('category');
         $category_id->setAttrib('class','form-control');
         $category_id->setRegisterInArrayValidator(false);
+        $catModel=new Application_Model_DbTable_Category();
+        $categories=$catModel->listCategories();
+        foreach ($categories as $category) {
+            $category_id->addMultiOption($category['id'],$category['name']);
+        }
 
         $image = new Zend_Form_Element_File('image');
         $image->setRequired();
         $image->setLabel('image');
-        $image->setDestination(realpath(APPLICATION_PATH . '/../images/courses'));
+        $image->setDestination(realpath(APPLICATION_PATH . '/../public/upload/courses'));
         $image->addValidator('IsImage');
-
-        // $category_id = new Zend_Form_Element_Hidden('category_id');
+        $originalFilename = pathinfo($image->getFileName());
+        $newFilename = 'course-' . uniqid() . '.' . $originalFilename['extension'];
+        $image->addFilter('Rename', $newFilename);
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setLabel('ADD');

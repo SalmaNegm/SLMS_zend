@@ -16,7 +16,7 @@ class CoursesController extends Zend_Controller_Action
     {
         // action body
     }
-
+    #/public/courses/crud
     public function crudAction()
     {
     	if($this->getRequest()->isPost())
@@ -24,25 +24,20 @@ class CoursesController extends Zend_Controller_Action
     		if($this->form->isValid($this->getRequest()->getParams()))
     		{
     			$data=$this->form->getValues();
-    			// $data['category_id']=2;
-    			// unset($data['category']);
-    			// var_dump($data);
-                // echo "<br><br>";
+                $originalFilePath=$this->form->image->getFileName();
+                $originalFilename = pathinfo($originalFilePath);
+
+                $newFilename = 'course-' . uniqid() . '.' . $originalFilename['extension'];
     			if($this->model->addCourse($data))
-    				$this->redirect('courses/crud');
-                // echo APPLICATION_PATH;
-                // var_dump($this->getRequest()->getPost());
-                // var_dump($this->getRequest()->getQuery());
+    				{
+                        $this->redirect('courses/crud');
+                    }
     		}
     	}
-    	$this->form->category_id->setMultiOptions	(array(
-    		'1'=>'category1',
-    		'2'=>'category2',
-    		));
     	$this->view->courses=$this->model->listAll();
     	$this->view->form=$this->form;
     }
-
+    #/public/courses/edit/cId/3
     public function editAction()
     {
     	$id=$this->getRequest()->getParam('cId');
@@ -52,47 +47,41 @@ class CoursesController extends Zend_Controller_Action
     		if($this->form->isValid($this->getRequest()->getParams()))
 			{
 				$data = $this->form->getValues();
+                $course=$this->model->courseById($id);
 				if ($this->model->edit($data,$id))
-					$this->redirect('courses/crud');	
+					{
+                        unlink(APPLICATION_PATH.'/../public/upload/courses/'.$course[0]['image']);
+                        $this->redirect('courses/crud');
+                    }	
 			}
-    	}
-        $this->form->category_id->setMultiOptions   (array(
-            '1'=>'category1',
-            '2'=>'category2',
-            ));
-    	
+    	}  	
     	$this->form->submit->setLabel('UPDATE');
     	$course=$this->model->courseById($id);
     	$this->form->populate($course[0]);
         $this->view->form=$this->form;
     }
-
+    #/public/courses/delete/cId/3
     public function deleteAction()
     {
         $course_id=$this->getRequest()->getParam('cId');
-        $r= $this->model->deleteCourse($course_id);
+        $course=$this->model->courseById($course_id);
+        $r=$this->model->deleteCourse($course_id);
         if($r)
-            $this->redirect('courses/crud');
+            {
+                unlink(APPLICATION_PATH.'/../public/upload/courses/'.$course[0]['image']);
+                $this->redirect('courses/crud');               
+            }
         else
             echo "nooooooooo";
-
     }
-
+    #/public/courses/singlecategory/catId/2
     public function singlecategoryAction()
     {
         $this->layout->setLayout('client');
         $cat_id=$this->getRequest()->getParam('catId');
         $courses=$this->model->listByCategoryId($cat_id);
         $cat=$this->cat_model->getCategoryById($cat_id);
-        // echo "<pre>";
-        // var_dump($courses);
-        // echo "</pre>";
-        // echo 'ddddddd's;
         $this->view->courses=$courses;
         $this->view->category=$cat;
-
     }
-
-
 }
-

@@ -5,6 +5,7 @@ class Application_Model_DbTable_Category extends Zend_Db_Table_Abstract
 
     protected $_name = 'categories';
     protected $_dependentTables = array('Application_Model_Course');
+
     function listCategories(){
 		return $this->fetchAll()->toArray();
 	}
@@ -24,10 +25,4 @@ class Application_Model_DbTable_Category extends Zend_Db_Table_Abstract
 	function getCategoryById($id){
 		return $this->find($id)->current();
 	}
-
-	
-
-
-
 }
-
