@@ -1,9 +1,36 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Types</b> and script/action name <b>add</b></p>
-</div>
+<link rel="stylesheet" type="text/css" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+<!-- Custom CSS -->
+<link href="<?=$this->baseUrl()?>/css/sb-admin.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="<?=$this->baseUrl()?>/css/morris.css" rel="stylesheet">
+<div class="col-md-6">
 <?php 
 
 	echo $this->form;
 
 ?>
+</div>
+<div class="col-sm-offset-1">
+	
+	<?php
+		
+	
+	echo "<table class='table table-striped'><tr><th>ID</th><th>material Type</th><th>action</th></tr>";
+	foreach ($this->MaterialType as $MaterialType)
+		{
+	echo "<tr>";
+	echo "<td>".$MaterialType['id'].'</td>';
+	echo "<td>".$MaterialType['name'].'</td>';
+	// echo "<td>".$MaterialType['name'].'</td>';
+	
+	echo "<td><a class='btn btn-success' href='".$this->baseUrl()."/types/edit/id/".$MaterialType['id']."'>  Edit  </a>". "<a class='btn btn-danger' href='".$this->baseUrl()."/types/delete/id/".$MaterialType['id']."'>  Delete  </a> </td>";
+	echo "</tr>";
+	}
+	echo "</table>";
+	?>
+</div>
+
+<script src="<?=$this->baseUrl()?>/js/jquery.js"></script>
+<script src="<?=$this->baseUrl()?>/js/raphael.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/morris.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/morris-data.js"></script>

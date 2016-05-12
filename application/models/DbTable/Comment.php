@@ -12,7 +12,7 @@ class Application_Model_DbTable_Comment extends Zend_Db_Table_Abstract
 		$row = $this->createRow();
 		$row->content = $commentInfo['content'];
 		$row->publish_date = new Zend_Db_Expr('NOW()');
-		$row->material_id = 2;
+		$row->material_id = 1;
 		$row->user_id = 2;
 		return $row->save();
 	}

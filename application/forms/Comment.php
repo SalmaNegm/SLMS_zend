@@ -7,10 +7,12 @@ class Application_Form_Comment extends Zend_Form
     {
         $content = new Zend_Form_Element_Text('content');
 		$content->setRequired();
-		$content->setLabel('content');
+		// $content->setLabel('content');
 
 	
 		$content->setAttrib('class', 'form-control');
+		 $content->setAttrib ( 'placeholder', 'Add Comment' );
+
 
 		// $publish_date = new Zend_Date();
 		// $publish_date->setRequired();

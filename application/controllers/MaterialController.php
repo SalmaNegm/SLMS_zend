@@ -115,8 +115,8 @@ class MaterialController extends Zend_Controller_Action
     {
         $this->layout->setlayout('client');
       $course_id=1;
-      $material_type_id=3;
-      $material_id=2;
+      $material_type_id=5;
+      $material_id=1;
       $this->view->material = $this->model->getMaterialByCourseMaterial($course_id,$material_type_id);
       $form = new Application_Form_Comment();
       if($this->getRequest()->isPost()){
@@ -142,15 +142,17 @@ public function viewAction()
     $material_id = $this->getRequest()->getParam('id');
     $material=$this->model->getMaterialById($material_id);
     $file=$material[0]['name'];
-    var_dump($file);
+    // var_dump($file);
 
         // var_dump($material);
-    $this->_helper->layout->disableLayout();
+    // $this->_helper->layout->disableLayout();
     $path='/var/www/html/SLMS_zend/SLMS_zend/public/upload/material/'.$file;
         // var_dump($path);
         // die();
     $file_ex= explode(".",$material[0]['name']);
     $ex=$file_ex[1];
+    $this->view->ex=$ex;
+   
     $name=$file_ex[0];
 
     switch ($ex) {

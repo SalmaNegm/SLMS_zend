@@ -1,13 +1,22 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Material</b> and script/action name <b>view</b></p>
-</div>
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/font-awesome.css">
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_style.css">
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_misc.css">
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/flexslider.css">
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/testimonails-slider.css">
+<script src="<?=$this->baseUrl()?>/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 <?php
 foreach ($this->material as $material){
-	echo "<label> name: </label>".$material['id'].'<br />';
+	// echo "<label> name: </label>".$material['id'].'<br />';
 	echo "<label> name: </label>".$material['name'].'<br />';
-	echo "<img src='".$this->baseUrl()."/upload/material/".$material['name']."'/><br>";
+	echo "<img width='200px' height='300px' src='".$this->baseUrl()."/upload/material/".$material['name']."'/><br/>";
+	echo "<a class='btn btn-primary' href='".$this->baseUrl()."/material/single'>Back </a> ";
 }
+?>
+ 
+   
 
-
-?>	
+<script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery.gmap3.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/plugins.js"></script>
+<script src="<?=$this->baseUrl()?>/js/main.js"></script>

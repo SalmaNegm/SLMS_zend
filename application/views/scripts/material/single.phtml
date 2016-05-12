@@ -11,15 +11,16 @@
     	<div class="container">
 			<div class="row">
 		        <div class="col-md-12">
-		            <div class="col-sm-offset-1">
+		            <!-- <div class="col-sm-offset-1"> -->
 		            <?php
 						foreach ($this->material as $material){
 		               	echo"<h1>". $material['name']."</h1>";
 		               	echo "<h1>".$material['description']."</h1>";
 		                }
+		                echo $this->ex;
 		                if ($this->material['is_download']=1) {
-		                	echo"<div class='row'>
-                       			 <div class='col-md-6 col-sm-4'>";
+		                	// echo"<div class='row'>
+                   //     			 <div class='col-md-6 col-sm-4'>";
 						echo "<a class='btn btn-success' href='".$this->baseUrl()."/material/download'> Download </a>";
 						}
 						echo "<a class='btn btn-primary' href='".$this->baseUrl()."/material/view/id/".$material['id']."'> View </a> ";
@@ -27,22 +28,37 @@
 		               ?>
 		            </div>
 		        </div>
+		        </div>
+		        </div>
 
-		        <!-- comments -->
+
+		        <!-- list comments -->
 		        
 
-<?php       
+      
 		   
-echo "<h3>Comments</h3>";
+
+<div class="col-md-12">
+	<h2><font color='red'>...Comments...</font></h2>
+<?php 
 foreach ($this->comment as $comments){
-	echo "<label> text: </label>".$comments['content'].' publish at'.$comments['publish_date'].'</br>';
-	echo "<a href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."'> Edit </a> "."<a href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."'> Delete </a> <br />";
+	echo $comments['content'].' <font color="green">publish at</font>'.$comments['publish_date'].'</br>';
+	echo "<a class='btn btn-success' href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."'> Edit </a> "."<a class='btn btn-danger' href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."'> Delete </a> <br />";
 
 }
-echo"<h2>Add Comment</h2>";
+
+?>
+</div>
+
+<div class="col-md-4">
+	<h2>Add Comment......</h2>
+	<?php
+
 echo $this->form;
 
 ?>
+</div>
+
 
 <script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
 <script src="<?=$this->baseUrl()?>/js/jquery.gmap3.min.js"></script>
