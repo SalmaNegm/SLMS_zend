@@ -18,6 +18,12 @@ class Application_Model_Course extends Zend_Db_Table_Abstract
 		return $this->fetchAll()->toArray();
 	}
 
+	function last5Courses()
+	{
+		return $this->fetchAll($this->select()->order('id DESC')->limit(5)
+    );
+
+	}
 	function addCourse($courseInfo)
 	{
 		$row = $this->createRow();
