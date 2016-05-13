@@ -1,5 +1,5 @@
 <?php
-class Application_Model_Coursecation_Form_Material extends Zend_Form
+class Application_Form_Material extends Zend_Form
 {
     public function init()
     {
@@ -37,7 +37,7 @@ class Application_Model_Coursecation_Form_Material extends Zend_Form
         $file->setLabel('File to upload:')
             ->setRequired(true)
             // ->setDestination(APPLICATION_PATH .'/../public/upload/material')
-            ->setDestination('/var/www/html/SLMS_zend/public/upload/material')
+            ->setDestination('/var/www/html/site/public/upload/material')
             ->addValidator('NotEmpty')
             ->addValidator('Count', false, 1);
         $this->addElement($file);
