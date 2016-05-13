@@ -33,14 +33,14 @@ class Application_Form_Regist extends Zend_Form
 
 	$image = new Zend_Form_Element_File('image');
 	$image->setLabel('Upload an image:')
-      ->setRequired()
+          ->setRequired()     
+          ->setDestination(realpath(APPLICATION_PATH . '/../public/upload'));
+          // ->setValueDisabled(True);
       // ->setMaxFileSize(10240000) // limits the filesize on the client side
-      ->setDestination('/var/www/html/newzend/public/images')
-      ->setValueDisabled(True);
       
 
 	$image->addValidator('Count', false, 1);                // ensure only 1 file
-	// $image->addValidator('Size', false, 10240000);            // limit to 10 meg
+	$image->addValidator('Size', false, 10240000);            // limit to 10 meg
 	$image->addValidator('Extension', false, 'jpg,jpeg,png,gif');// only JPEG, PNG, and GIFs
 
 	//Gender
@@ -55,13 +55,25 @@ class Application_Form_Regist extends Zend_Form
 		   ->setMultiOptions($type);
 
 
+	//Type of user(rgular/admin)
+	
+	// $role=array(
+	// 	"user"=>"user",
+	// 	"admin"=>"admin"
+	// 	);
+
+	// $type=new Zend_Form_Element_Radio('type');
+	// $type->setLabel("type")
+	// 	   ->setMultiOptions($role)
+	// 	   ->setValue('user'); 
+
 	//Signature
 	$signature = new Zend_Form_Element_Text('signature');
 	$signature->setRequired();
 	$signature->setLabel('Signature');
 
  	$id = new Zend_Form_Element_Hidden('id');
- 	$rule = new Zend_Form_Element_Hidden('rule');
+ 	// $rule = new Zend_Form_Element_Hidden('rule');
  	
 
 

@@ -1,4 +1,99 @@
+<link rel="stylesheet" type="text/css" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+    <!-- <link href="<?=$this->baseUrl()?>/css/font-awesome.css" rel="stylesheet"> 
+    <link href="<?=$this->baseUrl()?>/css/font-awesome.min.css" rel="stylesheet">  -->
+
+
+<!-- Custom CSS -->
+<link href="<?=$this->baseUrl()?>/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+<link href="<?=$this->baseUrl()?>/css/morris.css" rel="stylesheet">
+<div>
+
+    
+<h1>USERS</h1>
+   
 <br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Users</b> and script/action name <b>index</b></p>
+<div id="page-wrapper" class="col-lg-10 col-md-8 col-sm-6">
+
+	<?php		
+	echo "<table class='table  table-striped'><tr><th>Photo</th><th>Name</th><th>signature</th><th>E-mail</th><th>gender</th></th><th>Type</th><th>Update</th><th>Delete</th></tr>";
+
+
+
+	foreach ($this->users as $user){
+			echo "<tr>";
+			echo "<td>";
+			echo "<img src='".$this->baseUrl().'/upload/'.$user['image']."' class= 'tales'>";
+
+			
+			echo "<td>".$user['name'].'</td>';
+			echo "<td>".$user['signature'].'</td>';
+
+			echo "<td>".$user['email'].'</td>';
+			echo "<td>".$user['gender'].'</td>';
+
+			echo "<td>".$user['type'].'</td>';
+
+			echo "<td><a class='btn btn-success' href='".$this->baseUrl()."/users/update/".$user['id']."'>Update</a></td>";
+			echo "<td><a class='btn btn-danger' href='".$this->baseUrl()."/users/delete/".$user['id']."'>Delete</a></td>";
+
+			echo "</tr>";
+
+
+	}
+	echo "</table><br/>";
+	
+
+	?>
+	</div>
 </div>
+<!-- echo "hello maaterials"; -->
+<script src="<?=$this->baseUrl()?>/js/jquery.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery.query-2.1.7.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/material.js"></script>
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
