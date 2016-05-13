@@ -39,7 +39,7 @@ class UsersController extends Zend_Controller_Action
                 $storage = $auth->getStorage();
                 $storage->write($authAdapter->getResultRowObject(array('id', 'username')));
                 // var_dump($storage->read()->id);
-                $this->redirect('home/index');
+                $this->redirect('index');
             } else {
                 $this->redirect('users/login');
             }

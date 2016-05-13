@@ -18,6 +18,7 @@ class CoursesController extends Zend_Controller_Action
     }
     #/public/courses/crud
     public function crudAction()
+    
     {
     	if($this->getRequest()->isPost())
     	{
