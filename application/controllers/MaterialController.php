@@ -8,7 +8,7 @@ class MaterialController extends Zend_Controller_Action
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_Material();
     }
-
+    #/public/material/
     public function indexAction()
     {
         $this->view->material = $this->model->listMaterial();
@@ -34,6 +34,10 @@ class MaterialController extends Zend_Controller_Action
         $id = $this->getRequest()->getParam('id');
         if($this->model-> deleteMaterial($id))
             $this->redirect('material/index');
+    }
+    function listByCourseId($id)
+    {
+        return $this->fetchAll($this->select()->where('course_id=?',$id))->toArray();
     }
     public function editAction()
     {

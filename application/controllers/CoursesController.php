@@ -61,6 +61,24 @@ class CoursesController extends Zend_Controller_Action
     	$this->form->populate($course[0]);
         $this->view->form=$this->form;
     }
+    #public/courses/singlecourse/id/2
+    public function singlecourseAction()
+    {
+        // $this->layout->setLayout('client');
+        $course_id=$this->getRequest()->getParam('id');
+        $course=$this->model->courseById($course_id);
+        // $materials=$this->model->listByCourseId($course_id);
+        // $types=$this->materials_model->getTypesByMaterailId($course_id);
+        $materials= $this->materials_model->listByCourseId($course_id);
+        // echo "<pre>";
+        // var_dump($types);
+        // echo "</pre>";
+        // echo 'ddddddd's;
+        $this->view->course=$course;
+        $this->view->types=$types;
+        $this->view->materials=$materials;
+
+    }
     #/public/courses/delete/cId/3
     public function deleteAction()
     {
