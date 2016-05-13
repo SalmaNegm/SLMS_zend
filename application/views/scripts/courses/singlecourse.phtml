@@ -1,0 +1,21 @@
+<?php 
+echo "<label> name: </label>".$this->course[0]['name'].'<br />';
+    echo "<label> description: </label>".$this->course[0]['description'].'<br />';
+    echo "<img src='".$this->baseUrl()."/upload/courses/".$this->course[0]['image']."'/><br>";
+
+    echo "<table class='table table-striped' id='materials'><tr><th>material</th><th>view</th><th>download</th></tr>";
+    foreach ($this->materials as $material){
+    echo "<tr>";
+    echo "<td><a  href='".$this->baseUrl()."/material/single/id/".$material['id']."'> ".$material['name']. "</a></td>";
+    echo "<td>";
+    if ($material['is_show']){
+        echo "<a  class='btn btn-primary' href='".$this->baseUrl()."/material/view/id/".$material['id']."'>  view  </a>";
+    }
+    echo "</td>";
+    echo "<td>";
+    if ($material['is_download']){
+        echo "<a  class='btn btn-success' href='".$this->baseUrl()."/material/download/id/".$material['id']."'>  download  </a>";
+    }
+    echo "</td>";
+    }
+    echo "</table>";

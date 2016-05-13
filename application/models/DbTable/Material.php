@@ -52,6 +52,34 @@ class Application_Model_DbTable_Material extends Zend_Db_Table_Abstract
  		return $this->fetchAll($this->select()
  			->where('course_id=?',$course_id));
  	}
+ 	function getTypesByMaterailId($id){
+		$materialTypeTable = new Application_Model_DbTable_Type;
+		$materialTypesIds =$this->fetchAll($this->select('material_type_id')->where('course_id=?',$id))->toArray();
+		// $type_ids =[];
+		foreach ($materialTypesIds as $key => $value) {
+			$type_ids[]=$value['material_type_id'];
+		}
+
+		$types=$materialTypeTable->find($this->select()->where('id=?',$type_ids))->toArray();
+		// $types = $materialTypeTable->select()
+  //            ->from(,
+  //                   array('id', 'name'))
+  //    $select = $this->select()
+                $sel = $this->select()
+                ->from(array('m' => 'materials'),
+						array('id', 'name'))
+                ->join(array('t'=>$materialTypeTable),'m.material_type_id','t.id')
+                ->where('m.course_id = ?', 1);
+			// echo "<pre>";
+			// // echo "hdhd";
+			// var_dump($sel);
+			// echo "</pre>";
+			// die;
+             return $materialTypesIds[0];
+             // return $types;
+		
+	}
+	
 	
 
 
