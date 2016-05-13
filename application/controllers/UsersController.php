@@ -117,6 +117,10 @@ class UsersController extends Zend_Controller_Action
         // $this->layout->setlayout('regist');
          $this->_helper->layout->disableLayout();
          // $this->_helper->viewRenderer->setNoRender(true);
+         $authorization = Zend_Auth::getInstance();
+        if ($authorization->hasIdentity()) {
+            $this->redirect('home/index');
+        }
 
         $form = new Application_Form_Regist();
         if($this->getRequest()->isPost()){
