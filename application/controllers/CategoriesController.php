@@ -19,7 +19,7 @@ class CategoriesController extends Zend_Controller_Action
         // $this->view->categories = $this->model->listcategories();
         //Show Comments
     }
-
+    #/public/categories/delete/id/2
     public function deleteAction() {
         $id=$this->getRequest()->getParam('id');
         $course=$this->model->getCategoryById($id);
@@ -28,7 +28,7 @@ class CategoriesController extends Zend_Controller_Action
                 $this->redirect('categories/crud');               
             }
     }
-
+    #/public/categories/crud
     public function crudAction()
     {
         if($this->getRequest()->isPost())
@@ -45,7 +45,7 @@ class CategoriesController extends Zend_Controller_Action
         $this->view->categories=$this->model->listCategories();
         $this->view->form=$this->form;
     }
-
+    #/public/categories/edit/id/2
     public function editAction() {
         $id=$this->getRequest()->getParam('id');        
         if($this->getRequest()->isPost())
