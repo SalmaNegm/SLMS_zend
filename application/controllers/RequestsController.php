@@ -9,13 +9,16 @@ class RequestsController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_Request();
-        $this->user_model = new Application_Model_DbTable_User();
-        $authorization =Zend_Auth::getInstance();
-        if(!$authorization->hasIdentity()) 
-        {
+        // $this->user_model = new Application_Model_DbTable_User();
+        $this->mat_model = new Application_Model_DbTable_Material();
+        $this->layout= $this->_helper->layout();
+        // $authorization =Zend_Auth::getInstance();
+        // if(!$authorization->hasIdentity()) 
+        // {
             
-            $this->redirect('users/login');
-        }
+        //     $this->redirect('users/login');
+        // }
+
 
      //    $data = Zend_Auth::getInstance()->getStorage()->read();
      // 	$is_admin = $data->type;
@@ -28,47 +31,50 @@ class RequestsController extends Zend_Controller_Action
 
     public function indexAction()
     {
-    	$data = Zend_Auth::getInstance()->getStorage()->read();
-       	$is_admin = $data->type;
-    	if($is_admin == 1 )
-   		{
+    	// $data = Zend_Auth::getInstance()->getStorage()->read();
+     //   	$is_admin = $data->type;
+    	// if($is_admin == 1 )
+   		// {
    			$requests = $this->model->listRequests();
-    		$names = array();
-	    	foreach ($requests as  $request) 
-	    	{
-	    		$user_id = $request['user_id'];
-	    		// echo $user_id;
-	    		$user = $this->user_model->getUserById($user_id);
+    		// $names = array();
+	    	// foreach ($requests as  $request) 
+	    	// {
+	    	// 	$user_id = $request['user_id'];
+	    	// 	// echo $user_id;
+	    	// 	$user = $this->user_model->getUserById($user_id);
 	    
-	    		// echo $user[0]['name'];
-	    		array_push($names, $user[0]['name']);
-	    	}
-	    	// var_dump($names);
+	    	// 	// echo $user[0]['name'];
+	    	// 	array_push($names, $user[0]['name']);
+	    	// }
+	    	// // var_dump($names);
 
 	    
-	        $this -> view -> uname = $names;
+	        // $this -> view -> uname = $names;
 	        $this->view->requests = $requests;
 	   			
-   		}
+   		// }
     	
     }
 
     public function listAction()
     {
 
-    	$data = Zend_Auth::getInstance()->getStorage()->read();
-       	$is_admin = $data->type;
-    	if($is_admin == 1 )
-   		{
+    	// $data = Zend_Auth::getInstance()->getStorage()->read();
+     //   	$is_admin = $data->type;
+    	// if($is_admin == 1 )
+   		// {
    			$requests = $this->model->isRequestRead();
+        $material = $this->mat_model->listMaterial();
    			$this->view->requests = $requests;
+        $this->view->material = $material;
 
-   		}
+   		// }
 
     }
 
     public function addAction()
     {
+        $this->layout->setlayout('admin');
         $form = new Application_Form_Request();
         $data = Zend_Auth::getInstance()->getStorage()->read();
         $user_id = $data->id;
@@ -119,28 +125,25 @@ class RequestsController extends Zend_Controller_Action
 
     public function markAction()
     {
-    	$data = Zend_Auth::getInstance()->getStorage()->read();
-       	$is_admin = $data->type;
-    	if($is_admin == 1 )
-   		{
+    	// $data = Zend_Auth::getInstance()->getStorage()->read();
+     //   	$is_admin = $data->type;
+    	// if($is_admin == 1 )
+   		// {
    			
    			$id = $this->getRequest()->getParam('id');
 	        $request = $this->model->getRequestById($id);
 	        $mark = $request[0]['is_read'];
 	        $this->model->markRequest($id,$mark);
        		$this->redirect('requests/index');	
-   		}
-   		else
-   		{
-   			$this->redirect('error/error');
-   		}
+   		// }
+   		// else
+   		// {
+   		// 	$this->redirect('error/error');
+   		// }
         
     }
 
-    public function homeAction()
-    {
-        // action body
-    }
+   
 
 
 }
