@@ -3,14 +3,14 @@
 <html>
 <head>
 <?php echo $this->headMeta(); ?>
-<?php echo $this->headTitle() ?>
-<?php echo $this->headLink() ?>
-<?php echo $this->headScript() ?>
+<?php echo $this->headTitle(); ?>
+<?php echo $this->headLink(); ?>
+<?php echo $this->headScript(); ?>
 <title></title>
 <?php
-$this->headLink()->prependStylesheet("/Zend/SLMS_project/public/css/bootstrap.css");
-$this->headLink()->prependStylesheet("tZend/SLMS_project/public/css/sb-admin.css"); //admin
-$this->headLink()->prependStylesheet("/Zend/SLMS_project/public/css/morris.css");//admin
+$this->headLink()->prependStylesheet("/SLMS_zend/public/css/bootstrap.css");
+$this->headLink()->prependStylesheet("SLMS_zend/public/css/sb-admin.css"); //admin
+$this->headLink()->prependStylesheet("/SLMS_zend/public/css/morris.css");//admin
 ?> 
 </head>
 <body>
@@ -176,10 +176,10 @@ $this->headLink()->prependStylesheet("/Zend/SLMS_project/public/css/morris.css")
 
 
 <?php
-$this->headScript()->prependFile('/Zend/SLMS_project/public/js/jquery.js');
-$this->headScript()->prependFile('/Zend/SLMS_project/public/js/raphael.min.js');//admin
-$this->headScript()->prependFile('/Zend/SLMS_project/public/js/morris.min.js');//admin
-$this->headScript()->prependFile('/Zend/SLMS_project/public/js/morris-data.js');//admin
+$this->headScript()->prependFile('/SLMS_zend/public/js/jquery.js');
+$this->headScript()->prependFile('/SLMS_zend/public/js/raphael.min.js');//admin
+$this->headScript()->prependFile('/SLMS_zend/public/js/morris.min.js');//admin
+$this->headScript()->prependFile('/SLMS_zend/public/js/morris-data.js');//admin
 ?> 
 </body>
 </html>

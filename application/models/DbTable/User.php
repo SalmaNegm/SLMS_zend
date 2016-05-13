@@ -12,6 +12,7 @@ class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
 	function getUserById($id){
 		return $this->find($id)->toArray();
 	}
+
 	
 	function deleteUser($id){
 		return $this->delete('id='.$id);
@@ -19,8 +20,18 @@ class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
 	function addUser($userInfo){
 	
 	$row = $this->createRow();
-	$row->username = $userInfo['username'];
+	$row->name = $userInfo['name'];
+	$row->email = $userInfo['email'];
+	$row->type = 0;
+	$row->gender = $userInfo['gender'];
+
+
+
 	$row->password = md5($userInfo['password']);
+	$row->signature=$userInfo['signature'];
+	$row->image=$userInfo['image'];
+
+
 
 	return $row->save();
 	}

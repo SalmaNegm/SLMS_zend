@@ -23,6 +23,7 @@
       </controllersDirectory>
       <formsDirectory enabled="false">
         <formFile formName="Course"/>
+        <formFile formName="Regist"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
