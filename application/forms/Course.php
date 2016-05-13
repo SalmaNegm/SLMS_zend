@@ -6,10 +6,10 @@ class Application_Form_Course extends Zend_Form
     public function init()
     {
         /* Form Elements & Other Definitions Here ... */
-        $content = new Zend_Form_Element_Text('name');
-        $content->setRequired();
-        $content->setLabel('name');
-        $content->setAttrib('class','form-control col-1g-5');
+        $name = new Zend_Form_Element_Text('name');
+        $name->setRequired();
+        $name->setLabel('name');
+        $name->setAttrib('class','form-control col-1g-5');
 
         $description = new Zend_Form_Element_Textarea('description');
         $description->setRequired();
@@ -32,14 +32,14 @@ class Application_Form_Course extends Zend_Form
         $image->setLabel('image');
         $image->setDestination(realpath(APPLICATION_PATH . '/../public/upload/courses'));
         $image->addValidator('IsImage');
-        $originalFilename = pathinfo($image->getFileName());
-        $newFilename = 'course-' . uniqid() . '.' . $originalFilename['extension'];
-        $image->addFilter('Rename', $newFilename);
+        // $originalFilename = pathinfo($image->getFileName());
+        // $newFilename = 'course-' . uniqid() . '.' . $originalFilename['extension'];
+        // $image->addFilter('Rename', $newFilename);
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setLabel('ADD');
         $submit->setAttrib('class', 'btn btn-primary col-sm-offset-3 col-sm-5');
-		$this->addElements(array($content,$description,$image,$category_id,$submit));
+		$this->addElements(array($name,$description,$image,$category_id,$submit));
 
     }
 
