@@ -11,12 +11,13 @@
 <br /><br />
 <div id="view-content">
 	<!-- <p>View script for controller <b>Requests</b> and script/action name <b>index</b></p> -->
-	<h2> <b> List all requests :  <b> </h2>
+	<h2 style="margin-top:20px "> <b> List all requests :  <b> </h2>
+
 </div>
 
 <?php
-
-	echo "<a href='".$this->baseUrl()."/requests/list'> list all unread requests </a><br>";
+	
+	echo "<a style='margin-left:500px'href='".$this->baseUrl()."/requests/list'> list all unread requests </a><br><br>";
 	foreach ($this->requests as $req)
 	{
 		if($req['is_read'] == 0)
@@ -31,17 +32,15 @@
 
 		
 	// echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
-	echo "<label> <b> RequestContent : </b> </label><br>".$req['content'].'<br />';
+	echo "<label style='color:orange'> <b> RequestContent : </b> </label>".$req['content'].'<br />';
 
 	
-	echo "<a href='".$this->baseUrl()."/requests/delete/id/".$req['id']."'> Delete </a> "."<a href='".$this->baseUrl()."/requests/mark/id/".$req['id']."'> ".$mark."</a> <br />";
+	echo "<a style='margin-left:500px' href='".$this->baseUrl()."/requests/delete/id/".$req['id']."'> Delete </a> "."<a href='".$this->baseUrl()."/requests/mark/id/".$req['id']."'> ".$mark."</a> <br />";
 
-	// echo "<label> <b> User: </b> </label>".$req['user_id'].'<br />';
-	// echo "<label> <b> From : </b> </label>";
-	// foreach ($this->uname as  $value) 
-	// 	{
-	// 		echo $value;
-	// 	}
+	
+	
+	echo "<label> <b> From : </b> </label>".$req['name']."";
+	
 	
 	echo "<hr>";
 	
