@@ -71,12 +71,12 @@
       
     </ol>
 
-
+   
 
       <?php 
        echo "<div class='carousel-inner' role='listbox'>";
-
-      //   echo "<div class='item active'>";
+ 
+      //   echo "<div class='item active'>";          
       //   echo "<img src='".$this->baseUrl().'/images/'.$this->courses[0]['image']."' class= 'tales'>";
       //   echo "<div class='carousel-caption'>";
       //   // echo "<h3> ".$cor['name']."</h3>";
@@ -84,14 +84,14 @@
       //   // echo "<p>".$cor['description']."</p>";
       //   echo " </div>";
       //   echo " </div>";
-
+        
       
       foreach ($this->courses as $cor) 
       {
       // $val = '4.png';
-
-
-                echo "<div class='item '>";
+        
+        
+                echo "<div class='item '>";          
                 echo "<img src='".$this->baseUrl().'/images/'.$cor['image']."' class= 'tales'>";
                 echo "<div class='carousel-caption'>";
                 // echo "<h3> ".$cor['name']."</h3>";
@@ -99,9 +99,9 @@
                 // echo "<p>".$cor['description']."</p>";
                 echo " </div>";
                 echo " </div>";
-
-
-    }
+        
+      
+    } 
 echo " </div>";
     ?>
     
@@ -152,10 +152,10 @@ echo " </div>";
                       echo "<i class='fa fa-pencil'></i>";
                       echo " </div>";
                       // echo "<h4>".$cat['name']."</h4>";
-                      echo "<h3><a href='".$this->baseUrl()."/courses/singlecategory/catId/".$cor['id']."'> ".$cat['name']."</a></h3>";
+                      echo "<h3><a href='".$this->baseUrl()."/courses/singlecategory/catId/".$cat['id']."'> ".$cat['name']."</a></h3>";
                       echo"<p>".$cat['description']."</p>";
 
-                        echo "</div>";
+                        echo "</div>";      
                         echo" </div>";
                       }
                       

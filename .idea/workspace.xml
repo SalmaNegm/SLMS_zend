@@ -2,47 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08fdbeca-2bd2-4aac-a610-9c8ee8d73351" name="Default" comment="-admin can CRUD the courses:&#10;    *future modifications:&#10;        --when a course is updayed or deleted the old image must be deleted too&#10;        --available categories need to be displayed from the database ... it's ststic until now for testing only&#10;        -- course name need to be unique&#10;        -- need to add AJAX to delete operation&#10;        &#10;-single category page : front-end&#10;   *future modifications:&#10;       --link courses to the single course page&#10;       &#10;- layout:&#10;    * future modification:&#10;      -- css and js files of both layouts need to be separated &#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/upload/13092023_837311586375598_8437973664650573570_n.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/upload/material/11.MP3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/upload/material/13177768_837311513042272_4783292463423176475_n.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/forms/Edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/forms/Materialvedio.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/scripts/material/uploadvedio.phtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/scripts/users/role.phtml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/upload/material/9614_10154091099269630_685060871230343898_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/upload/material/php.mp4" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/css/font-awesome.css" afterPath="$PROJECT_DIR$/public/css/page-wrapper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.zfproject.xml" afterPath="$PROJECT_DIR$/.zfproject.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/upload/courses/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/upload/php.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/scripts/users/update.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/Bootstrap.php" afterPath="$PROJECT_DIR$/application/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/configs/application.ini" afterPath="$PROJECT_DIR$/application/configs/application.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CommentsController.php" afterPath="$PROJECT_DIR$/application/controllers/CommentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CoursesController.php" afterPath="$PROJECT_DIR$/application/controllers/CoursesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/MaterialController.php" afterPath="$PROJECT_DIR$/application/controllers/MaterialController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/RequestsController.php" afterPath="$PROJECT_DIR$/application/controllers/RequestsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/UsersController.php" afterPath="$PROJECT_DIR$/application/controllers/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/forms/Comment.php" afterPath="$PROJECT_DIR$/application/forms/Comment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/forms/Login.php" afterPath="$PROJECT_DIR$/application/forms/Login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/forms/Material.php" afterPath="$PROJECT_DIR$/application/forms/Material.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/forms/Regist.php" afterPath="$PROJECT_DIR$/application/forms/Regist.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/layouts/scripts/admin.phtml" afterPath="$PROJECT_DIR$/application/layouts/scripts/admin.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/DbTable/Comment.php" afterPath="$PROJECT_DIR$/application/models/DbTable/Comment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/DbTable/Material.php" afterPath="$PROJECT_DIR$/application/models/DbTable/Material.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/DbTable/Request.php" afterPath="$PROJECT_DIR$/application/models/DbTable/Request.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/layouts/scripts/client.phtml" afterPath="$PROJECT_DIR$/application/layouts/scripts/client.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/DbTable/User.php" afterPath="$PROJECT_DIR$/application/models/DbTable/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/comments/edit.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/comments/edit.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/courses/singlecategory.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/courses/singlecategory.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/courses/singlecourse.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/courses/singlecourse.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/index/index.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/index/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/material/index.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/material/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/material/single.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/material/single.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/material/upload.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/material/upload.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/material/video.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/material/video.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/material/view.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/material/view.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/requests/index.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/requests/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/requests/list.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/requests/list.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/scripts/users/index.phtml" afterPath="$PROJECT_DIR$/application/views/scripts/users/index.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/sb-admin.css" afterPath="$PROJECT_DIR$/public/css/sb-admin.css" />
     </list>
     <ignored path="SLMS_project.iws" />
     <ignored path=".idea/workspace.xml" />

@@ -64,7 +64,7 @@
             		                </div>
             		                <div class="blog-content">
             		                    <div class="content-show">
-            		                        <h4><a href="single-post.html"><?= $course['name'] ?></a></h4>
+            		                        <h4><a href="<?=$this->baseUrl()?>/courses/singlecourse/id/<?=$course['id']?>"><?= $course['name'] ?></a></h4>
             		                        <!-- <span>29 Sep 2084</span> -->
             		                    </div>
             		                    <div class="content-hide">
@@ -77,10 +77,12 @@
             			}
             		?>
             		</div>
+                    <?= $this->form; ?>
             	</div>
             </div>
         </div>
     </div>
+
 
 		<!-- ***************************END COURSES LIST*************************** -->
 

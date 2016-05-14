@@ -5,6 +5,11 @@
 <?php echo $this->headTitle() ?>
 <?php echo $this->headLink() ?>
 <?php echo $this->headScript() ?>
+<?php
+    $data = Zend_Auth::getInstance()->getStorage()->read();
+    $is_admin = $data->type;
+    $name=$data->name;
+?>
 
 <!-- <?php
 $this->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/css/bootstrap.css");
@@ -28,13 +33,15 @@ $this->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/
             <div class="row">
                 <div class="col-sm-2">
                     <div class="home-account">
-                        <a href="#">Home</a>
+                        <a href=<?=$this->baseUrl()?> >Home</a>
                     </div>
                 </div>
                 <div class="col-md-10">
                     <div class="cart-info">
-                        welcome <a href="#">.......</a>
-                        <a class="col-sm-offset-1" href="#">Logout</a>
+                        welcome <a href="#"><?=$name?></a>
+                        <?php
+                       echo "<a class='col-sm-offset-1' href='".$this->baseUrl()."/users/logout/'>Logout</a>";
+                        ?>
                     </div>
                 </div>
             </div>
@@ -51,21 +58,28 @@ $this->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/
                 <div class="col-md-6">
                     <div class="main-menu">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about-us.html">About</a></li>
+                            <?php
+                            if($is_admin == '1')
+                            {
+                                ?>
+                                <li><a href="<?=$this->baseUrl()?>/categories/crud" >Dash Board</a></li>
+                                <?php
+                            }
+                            ?>
+                           <!--  <li><a href="about-us.html">About</a></li>
                             <li><a href="products.html">Products</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="contact-us.html">Contact</a></li> -->
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <div class="search-box">  
                         <form name="search_form" method="get" class="search_form">
                             <input id="search" type="text" />
                             <input type="submit" id="search-button" />
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

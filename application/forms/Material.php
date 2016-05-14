@@ -38,7 +38,11 @@ class Application_Form_Material extends Zend_Form
             ->setRequired(true)
             ->setDestination(APPLICATION_PATH .'/../public/upload/material')
             // ->setDestination('/var/www/html/SLMS_zend/public/upload/material')
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> a2f3daa9f405c20ec1ac5abf49b8c3080333f919
 
             ->addValidator('NotEmpty')
             ->addValidator('Count', false, 1)

@@ -36,7 +36,12 @@ class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
 
 
 
+
     function editUser($userInfo,$id){
+    }
+
+    function changeUser($userInfo,$id){
+
 
          $this->update($userInfo,"id=$id");
          

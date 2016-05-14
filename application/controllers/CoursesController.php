@@ -21,6 +21,16 @@ class CoursesController extends Zend_Controller_Action
     public function crudAction()
     
     {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
+        $data = Zend_Auth::getInstance()->getStorage()->read();
+        $is_admin = $data->type;
+        if($is_admin != '1')
+        {
+            $this->redirect('');
+        }
     	if($this->getRequest()->isPost())
     	{
     		if($this->form->isValid($this->getRequest()->getParams()))
@@ -43,6 +53,16 @@ class CoursesController extends Zend_Controller_Action
     #/public/courses/edit/cId/3
     public function editAction()
     {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
+        $data = Zend_Auth::getInstance()->getStorage()->read();
+        $is_admin = $data->type;
+        if($is_admin != '1')
+        {
+            $this->redirect('');
+        }
     	$id=$this->getRequest()->getParam('cId');
     	
     	if($this->getRequest()->isPost())
@@ -89,6 +109,16 @@ class CoursesController extends Zend_Controller_Action
     #/public/courses/delete/cId/3
     public function deleteAction()
     {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
+        $data = Zend_Auth::getInstance()->getStorage()->read();
+        $is_admin = $data->type;
+        if($is_admin != '1')
+        {
+            $this->redirect('');
+        }
         $course_id=$this->getRequest()->getParam('cId');
         $course=$this->model->courseById($course_id);
         $r=$this->model->deleteCourse($course_id);
@@ -101,11 +131,30 @@ class CoursesController extends Zend_Controller_Action
     #/public/courses/singlecategory/catId/2
     public function singlecategoryAction()
     {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
         $this->layout->setLayout('client');
         $cat_id=$this->getRequest()->getParam('catId');
         $courses=$this->model->listByCategoryId($cat_id);
         $cat=$this->cat_model->getCategoryById($cat_id);
         $this->view->courses=$courses;
         $this->view->category=$cat;
+        $this->request_form=new Application_Form_Request();
+        $this->view->form = $this->request_form;
+        if($this->getRequest()->isPost())
+        {
+            if($this->request_form->isValid($this->getRequest()->getParams()))
+            {
+                $data=$this->request_form->getValues();
+                $auth = Zend_Auth::getInstance()->getStorage()->read();
+                $user_id = $auth->id;
+                $this->model_request = new Application_Model_DbTable_Request();
+                if($this->model_request->addRequest($data,$user_id))
+                    $this->redirect('courses/singlecategory/catId/'.$cat_id);
+            }
+        }
+
     }
 }

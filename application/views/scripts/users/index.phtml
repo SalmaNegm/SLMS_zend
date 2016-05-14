@@ -1,12 +1,16 @@
 <link rel="stylesheet" type="text/css" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+<<<<<<< HEAD
     <!-- <link href="<?=$this->baseUrl()?>/css/font-awesome.css" rel="stylesheet"> 
     <link href="<?=$this->baseUrl()?>/css/font-awesome.min.css" rel="stylesheet">  -->
 
 
+=======
+>>>>>>> a2f3daa9f405c20ec1ac5abf49b8c3080333f919
 <!-- Custom CSS -->
 <link href="<?=$this->baseUrl()?>/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
+<<<<<<< HEAD
 <link href="<?=$this->baseUrl()?>/css/morris.css" rel="stylesheet">
 <div>
 
@@ -42,13 +46,43 @@
 			echo "</tr>";
 
 
+=======
+    <link href="<?=$this->baseUrl()?>/css/morris.css" rel="stylesheet"> 
+
+    <h1>ALL Users </h1>
+<br /><br />
+<div class="col-sm-offset-1 ">
+<?php
+	echo "<table class='table table-striped'><tr><th>Photo</th><th>Name</th><th>signautur</th><th>E-mail</th><th>Gender</th></th><th>Is_ban</th><th>Is_admin</th><th>Delete</th></tr>";
+	foreach ($this->users as $user){
+	echo "<tr>";
+	echo "<td>";
+	echo "<img src='".$this->baseUrl().'/upload/'.$user['image']."' class= 'tales'>";
+	echo "</td>";
+	echo "<td>".$user['name'].'</td>';
+	echo "<td>".$user['signature'].'</td>';
+
+	echo "<td>".$user['email'].'</td>';
+	echo "<td>".$user['gender'].'</td>';
+
+	
+	echo "<td><input type='checkbox'".(($user['is_banned'])? "checked=checked" : "")." name=".$user['id']. " class='is_download'  id ='is_download' value=".$user['is_banned']."></td>";
+	echo "<td><input type='checkbox'".(($user['type'])? "checked=checked" : "")." name=".$user['id']. " class='is_show' id='is_show' value=".$user['type']."  ></td>";
+	echo "<td><a class='btn btn-danger' href='".$this->baseUrl()."/users/delete/id/".$user['id']."'>Delete</a></td>";
+
+	
+	echo "</tr>";
+>>>>>>> a2f3daa9f405c20ec1ac5abf49b8c3080333f919
 	}
 	echo "</table><br/>";
 	
 
 	?>
 	</div>
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> a2f3daa9f405c20ec1ac5abf49b8c3080333f919
 <!-- echo "hello maaterials"; -->
 <script src="<?=$this->baseUrl()?>/js/jquery.js"></script>
 <script src="<?=$this->baseUrl()?>/js/jquery.query-2.1.7.js"></script>
@@ -56,6 +90,7 @@
 <script src="<?=$this->baseUrl()?>/js/material.js"></script>
 
 
+<<<<<<< HEAD
 
    
 
@@ -98,3 +133,5 @@
 
 
 
+=======
+>>>>>>> a2f3daa9f405c20ec1ac5abf49b8c3080333f919

@@ -21,6 +21,16 @@ class CategoriesController extends Zend_Controller_Action
     }
     #/public/categories/delete/id/2
     public function deleteAction() {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
+        $data = Zend_Auth::getInstance()->getStorage()->read();
+        $is_admin = $data->type;
+        if($is_admin != '1')
+        {
+            $this->redirect('');
+        }
         $id=$this->getRequest()->getParam('id');
         $course=$this->model->getCategoryById($id);
         if($this->model->deleteCategory($id))
@@ -31,6 +41,16 @@ class CategoriesController extends Zend_Controller_Action
     #/public/categories/crud
     public function crudAction()
     {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
+        $data = Zend_Auth::getInstance()->getStorage()->read();
+        $is_admin = $data->type;
+        if($is_admin != '1')
+        {
+            $this->redirect('');
+        }
         if($this->getRequest()->isPost())
         {
             if($this->form->isValid($this->getRequest()->getParams()))
@@ -47,6 +67,16 @@ class CategoriesController extends Zend_Controller_Action
     }
     #/public/categories/edit/id/2
     public function editAction() {
+        $authorization = Zend_Auth::getInstance();
+        if (!$authorization->hasIdentity()) {
+            $this->redirect('users/login');
+        }
+        $data = Zend_Auth::getInstance()->getStorage()->read();
+        $is_admin = $data->type;
+        if($is_admin != '1')
+        {
+            $this->redirect('');
+        }
         $id=$this->getRequest()->getParam('id');        
         if($this->getRequest()->isPost())
         {
