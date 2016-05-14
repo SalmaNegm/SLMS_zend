@@ -1,69 +1,106 @@
-<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/bootstrap.css">
-<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/font-awesome.css">
-<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_style.css">
-<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_misc.css">
-<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/flexslider.css">
-<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/testimonails-slider.css">
-<script src="<?=$this->baseUrl()?>/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
-<h2>SIngle Material</h2>
-<div id="product-post">
-    	<div class="container">
-			<div class="row">
-		        <div class="col-md-12">
-		            <!-- <div class="col-sm-offset-1"> -->
-		            <?php
-						foreach ($this->material as $material){
-		               	echo"<h1>". $material['name']."</h1>";
-		               	echo "<h1>".$material['description']."</h1>";
-		               	echo"<h1>this material downloaded <font color='red'>       ". $material['no_downloads']."       </font> times</h1>";
-		                }
-		                // echo $this->ex;
-		                if ($this->material['is_download']=1) {
-		                	// echo"<div class='row'>
-                   //     			 <div class='col-md-6 col-sm-4'>";
-						echo "<a class='btn btn-success' href='".$this->baseUrl()."/material/download/material_id/".$material['id']."'> Download </a>";
-						}
-						echo "<a class='btn btn-primary' href='".$this->baseUrl()."/material/view/material_id/".$material['id']."'> View </a> ";
-						echo "</div></div>";
-		               ?>
-		            </div>
-		        </div>
-		        </div>
-		        </div>
 
 
-		        <!-- list comments -->
-		        
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/font-awesome.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_style.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_misc.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/flexslider.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/testimonails-slider.css">
+    <script src="<?=$this->baseUrl()?>/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+        
+        <!-- *************************CATEGORY DATA*************************** -->
+    <div id="product-post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-sm-offset-1">
+                    <?php
+					foreach ($this->material as $material){	                   ?>
+                        <h1><?= $material['name']?></h1>
 
-      
-		   
+                    </div>
+                </div>
+            </div>
+            <div id="single-blog" class="page-section first-section col-sm-offset-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="product-item col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="product-content">
+                                        <!-- <div class="product-title">-->
+                                             <div class="blog-thumb">
+                                             
+                                              
+                                        <!-- echo "<img   src='".$this->baseUrl()."/upload/courses/".$this->course[0]['image']."'/><br>";?> -->
 
+                                        
+                                    <!-- </div>"subtitle">4 comments</span> -->
+                                        </div> 
+                                        <h3><?= $material['description']?></h3>
+                                        <h3>#downloads <font color='red'><?= $material['no_downloads']?>       </font></h3>
+                                        <?php
+                                         if ($material['is_show']){
+                                echo "<a  class='btn btn-primary' href='".$this->baseUrl()."/material/view/material_id/".$material['id']."'>  view  </a>";
+                            }
+                            
+                           
+                            if ($material['is_download']){
+                                echo "<a  class='btn btn-success' href='".$this->baseUrl()."/material/download/material_id/".$material['id']."'>  download  </a>";
+                            }
+		                
+                                        }?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <div class="col-md-12">
 	<h2><font color='red'>...Comments...</font></h2>
 <?php 
 foreach ($this->comment as $comments){
-
 	echo $comments['content'].' <font color="green">publish at</font>'.$comments['publish_date'].'</br>';
-	echo "<a class='btn btn-success' href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."/material_id/".$comments['material_id']."'> Edit </a> "."<a class='btn btn-danger' href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."/material_id/".$comments['material_id']."'> Delete </a> <br />";
+	echo "<a class='btn btn-success' href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."'> Edit </a> "."<a class='btn btn-danger' href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."'> Delete </a> <br />";
 
 }
 
 ?>
 </div>
 
-<div class="col-md-4">
-	<h2>Add Comment......</h2>
-	<?php
+       
+                    </div>
+                    <div class="col-md-4">    
+                    <h2>Add Comment......</h2>
+					<?php
 
-echo $this->form;
+				echo $this->form;
 
-?>
-</div>
+					?>
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ***************************END COURSES LIST*************************** -->
 
 
 <script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
 <script src="<?=$this->baseUrl()?>/js/jquery.gmap3.min.js"></script>
 <script src="<?=$this->baseUrl()?>/js/plugins.js"></script>
-<script src="<?=$this->baseUrl()?>/js/main.js"></script>
+<script src="<?=$this->baseUrl()?>/js/main.js"></script> <!-- images motion -->
+
+
+
+
+
+
+
+
+
+
 	

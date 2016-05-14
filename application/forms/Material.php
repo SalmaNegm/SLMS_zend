@@ -37,6 +37,9 @@ class Application_Form_Material extends Zend_Form
         $file->setLabel('File to upload:')
             ->setRequired(true)
             ->setDestination(APPLICATION_PATH .'/../public/upload/material')
+            // ->setDestination('/var/www/html/SLMS_zend/public/upload/material')
+            
+
             ->addValidator('NotEmpty')
             ->addValidator('Count', false, 1)
             ->addValidator('Size', false, 10485760) //10MB = 10,485,760 bytes

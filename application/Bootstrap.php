@@ -36,7 +36,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
   //   	$view->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/css/templatemo_misc.css");//client
   //   	$view->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/css/flexslider.css");//client
   //   	$view->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/css/testimonails-slider.css");//client
-  //   	$view->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/css/font-awesome.min.css");//client
+    	$view->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/css/font-awesome.min.css");//client
 
 		// // Set the initial JS to load:
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/jquery.js');

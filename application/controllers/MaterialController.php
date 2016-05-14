@@ -22,9 +22,12 @@ class MaterialController extends Zend_Controller_Action
 
         $material_id = $this->getRequest()->getParam('material_id');       
         $material = $this->model->getMaterialById($material_id);
-        $material[0]['no_downloads']+=1;
+        $material[0]['no_downloads'] += 1;
+        // // echo $material[0]['no_downloads'] ;
+        // // die();
         $no_downloads=$material[0]['no_downloads'];
-        $this->model->updateMaterial($id,$no_downloads);
+
+        $this->model->updateMaterial($material_id,$no_downloads);
         $file_ex= explode(".",$material[0]['name']);
         header('Content-type: application/'.$file_ex[1]);
         header("Content-Disposition: attachment; filename='".$material[0]['name']."'"); 
@@ -136,10 +139,12 @@ public function viewAction()
 
     switch ($ex) {
         case 'jpg':
-                # code...
+        case 'jpeg':
+        case 'png':
             $this->view->material = $this->model->getMaterialById($material_id);
         break;
         case 'pdf':
+        case 'ppt':
             // $this->_helper->viewRenderer->setNoRender(true);
             header('Content-type:application/pdf');
             header('Content-Disposition:inline;filname=filename.pdf');
@@ -150,6 +155,8 @@ public function viewAction()
              $this->view->layout()->disableLayout();
         break;
         case 'mp4':
+        case 'mp3':
+        case 'avi':
             $this->view->material = $this->model->getMaterialById($material_id);
             $this->redirect('material/video');
         break;    
