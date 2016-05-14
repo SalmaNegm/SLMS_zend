@@ -42,15 +42,21 @@ class Application_Model_DbTable_Material extends Zend_Db_Table_Abstract
 		$this->update($material,"id=$id");
 	}
 	function updateMaterial($id,$no_download){
+		// echo $no_download;die();
 		$data = array( 
 			'no_downloads' => $no_download
 
 			);
 		$where = $this->getAdapter()->quoteInto('id = ?', $id);
 		$this->update($data, $where);
- 		
+
+		// $material=$this->fetchRow('id='.$id,1);
+		// $material->no_downloads+=1;
+		// return $material->save();
+
  	
  	}
+
  	function getMaterialByCourseMaterial($course_id,$material_type_id){
  		return $this->fetchAll($this->select()
  			->where('course_id=?',$course_id)
