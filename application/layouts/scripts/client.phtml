@@ -34,7 +34,9 @@ $this->headLink()->prependStylesheet("http://localhost/Zend/SLMS_project/public/
                 <div class="col-md-10">
                     <div class="cart-info">
                         welcome <a href="#">.......</a>
-                        <a class="col-sm-offset-1" href="#">Logout</a>
+                        <?php
+                       echo "<a class='col-sm-offset-1' href='".$this->baseUrl()."/users/logout/'>Logout</a>";
+                        ?>
                     </div>
                 </div>
             </div>

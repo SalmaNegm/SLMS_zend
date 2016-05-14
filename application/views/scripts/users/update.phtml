@@ -1,0 +1,98 @@
+
+<link rel="stylesheet" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+  <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/font-awesome.css">
+  <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_style.css">
+  <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_misc.css">
+  <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/flexslider.css">
+  <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/testimonails-slider.css">
+  <script src="<?=$this->baseUrl()?>/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <style>
+      /* .tales {
+          width: 70%;
+          height :500px;
+          text-align:center;
+          margin:auto;
+        }
+        .carousel-inner{
+          width:600px;
+          max-height: 400px ;
+        }
+ */        .carousel slide{
+          width:600px;
+        }
+        .carousel-caption{
+          color:red;
+        }
+
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 80%;
+      margin: auto;
+  }
+  #myCarousel{
+   width:100%;
+   max-height:600px;
+   margin: auto;
+   margin-top: 40px;
+  }
+  
+  
+
+  </style>
+  <script>
+      $(function()
+            {
+                $( '.carousel-inner .item:first' ).addClass( 'active' );    
+              
+            }
+      );
+  </script>
+
+
+<div id="welcome">
+    <div class="container" id="slider" >
+
+    <div class="heading-section">
+        <h2>Last Free Courses</h2>
+        <img src="images/under-heading.png" alt="" >
+    </div>
+
+      <!-- <h2> Home Page </h2> -->
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      
+    </ol>
+
+   
+
+      <?php
+
+          echo $this->form;
+          // echo "<a href='".$this->baseUrl()."/users/regist'>Register</a>"
+
+        ?>
+      
+        
+      
+     
+          
+
+
+
+
+   
+
+
+
+<script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery.gmap3.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/plugins.js"></script>
+<script src="<?=$this->baseUrl()?>/js/main.js"></script> <!-- images motion
