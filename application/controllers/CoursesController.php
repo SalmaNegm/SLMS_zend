@@ -10,6 +10,7 @@ class CoursesController extends Zend_Controller_Action
         $this->cat_model = new Application_Model_DbTable_Category();
         $this->form = new Application_Form_Course();
         $this->layout = $this->_helper->layout();
+        $this->materials_model = new Application_Model_DbTable_Material();
     }
 
     public function indexAction()
@@ -70,7 +71,7 @@ class CoursesController extends Zend_Controller_Action
     #public/courses/singlecourse/id/2
     public function singlecourseAction()
     {
-        // $this->layout->setLayout('client');
+        $this->layout->setLayout('client');
         $course_id=$this->getRequest()->getParam('id');
         $course=$this->model->courseById($course_id);
         // $materials=$this->model->listByCourseId($course_id);
@@ -81,7 +82,7 @@ class CoursesController extends Zend_Controller_Action
         // echo "</pre>";
         // echo 'ddddddd's;
         $this->view->course=$course;
-        $this->view->types=$types;
+        // $this->view->types=$types;
         $this->view->materials=$materials;
 
     }

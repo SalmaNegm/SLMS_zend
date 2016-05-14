@@ -10,6 +10,10 @@ class UsersController extends Zend_Controller_Action
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_User();
         // $this->layout = $this->_helper->disableLayout();
+       $authorization = Zend_Auth::getInstance();
+       if (!$authorization->hasIdentity()) {
+           $this->redirect('users/login');
+       }
 
     }
 
@@ -17,20 +21,24 @@ class UsersController extends Zend_Controller_Action
     {
         // action body
         $this->view->users = $this->model->listusers();
+        // $data=Zend_Auth::getInstance()->getStorage()->read();
+        // var_dump($data);
 
     }
 
      public function deleteAction() {
         $id = $this->getRequest()->getParam('id');
-        if ($this->model->deleteuser($id)) {
+        if ($this->model->deleteUser($id)) {
             $this->redirect('users/index');
         }
     }
 
+   
+
     function editAction() {
         $id = $this->getRequest()->getParam('id');
         $user = $this->model->getUserById($id);
-        $form = new Application_Form_User();
+        $form = new Application_Form_Regist();
         $form->populate($user[0]);
         //$values = $this->getRequest()->getParams();
         if ($this->getRequest()->isPost()) {
@@ -42,27 +50,32 @@ class UsersController extends Zend_Controller_Action
         }
         //$form->removeElement('submit');
         $this->view->form = $form;
-        $this->render('add');
+        $this->render('edit');
     }
 
 
     public function loginAction()
+
     {
-       $authorization = Zend_Auth::getInstance();
-        if ($authorization->hasIdentity()) {
-            $this->redirect('home/index');
-        }
+        $this->_helper->layout->disableLayout();
+
+       // $authorization= Zend_Auth::getInstance();
+       //  if ($authorization ->hasIdentity()) {
+       //      $this->redirect('users/index');
+       //  }
         $form = new Application_Form_Login();
         //$values = $this->getRequest()->getParams();
         if ($this->getRequest()->isPost()) {
             ///// authenticate user /////
             $username = $this->getRequest()->getParam('name');
             $password = $this->getRequest()->getParam('password');
+            // $id = $this->getRequest()->getParam('id');
+
             
 
              // get the default db adapter
             $db = Zend_Db_Table::getDefaultAdapter();
-            $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'users', 'name', 'password');
+            $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'users','name', 'password');
             //set the email and password
             $authAdapter->setIdentity($username);
             $authAdapter->setCredential(md5($password));
@@ -70,9 +83,9 @@ class UsersController extends Zend_Controller_Action
             if ($result->isValid()) {
                 $auth = Zend_Auth::getInstance();
                 $storage = $auth->getStorage();
-                $storage->write($authAdapter->getResultRowObject(array('id', 'name')));
+                $storage->write($authAdapter->getResultRowObject(array('id','type', 'name','is_banned')));
                 // var_dump($storage->read()->id);
-                $this->redirect('home/index');
+                $this->redirect('users/index');
             } else {
                 $this->redirect('users/regist');
             }
@@ -81,6 +94,11 @@ class UsersController extends Zend_Controller_Action
         $this->view->form = $form;
     }
 
+    public function roleAction(){
+
+        $this->view->users = $this->model->listusers();
+
+    }
     
 
  public function registAction()

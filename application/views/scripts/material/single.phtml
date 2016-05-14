@@ -16,14 +16,15 @@
 						foreach ($this->material as $material){
 		               	echo"<h1>". $material['name']."</h1>";
 		               	echo "<h1>".$material['description']."</h1>";
+		               	echo"<h1>this material downloaded <font color='red'>       ". $material['no_downloads']."       </font> times</h1>";
 		                }
-		                echo $this->ex;
+		                // echo $this->ex;
 		                if ($this->material['is_download']=1) {
 		                	// echo"<div class='row'>
                    //     			 <div class='col-md-6 col-sm-4'>";
-						echo "<a class='btn btn-success' href='".$this->baseUrl()."/material/download'> Download </a>";
+						echo "<a class='btn btn-success' href='".$this->baseUrl()."/material/download/material_id/".$material['id']."'> Download </a>";
 						}
-						echo "<a class='btn btn-primary' href='".$this->baseUrl()."/material/view/id/".$material['id']."'> View </a> ";
+						echo "<a class='btn btn-primary' href='".$this->baseUrl()."/material/view/material_id/".$material['id']."'> View </a> ";
 						echo "</div></div>";
 		               ?>
 		            </div>
@@ -42,8 +43,9 @@
 	<h2><font color='red'>...Comments...</font></h2>
 <?php 
 foreach ($this->comment as $comments){
+
 	echo $comments['content'].' <font color="green">publish at</font>'.$comments['publish_date'].'</br>';
-	echo "<a class='btn btn-success' href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."'> Edit </a> "."<a class='btn btn-danger' href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."'> Delete </a> <br />";
+	echo "<a class='btn btn-success' href='".$this->baseUrl()."/comments/edit/id/".$comments['id']."/material_id/".$comments['material_id']."'> Edit </a> "."<a class='btn btn-danger' href='".$this->baseUrl()."/comments/delete/id/".$comments['id']."/material_id/".$comments['material_id']."'> Delete </a> <br />";
 
 }
 
