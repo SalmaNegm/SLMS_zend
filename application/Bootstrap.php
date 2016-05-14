@@ -37,7 +37,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/modernizr-2.6.1-respond-1.1.0.min.js');//client
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/jquery-1.11.0.min.js');//client
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/jquery.gmap3.min.js');//client
-		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/plugins.js');//client
+		$view->headScript()->prependFile('http://localhost/SLMS_zend/public/js/plugins.js');//client
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/main.js');//client
 
 
