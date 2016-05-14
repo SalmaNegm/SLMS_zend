@@ -17,7 +17,7 @@
 
 <?php
 
-	echo "<a href='".$this->baseUrl()."/requests/index'> list all requests </a><br>";
+	echo "<a style='margin-left:400px'href='".$this->baseUrl()."/requests/index'> list all requests </a><br>";
 	foreach ($this->requests as $req)
 	{
 		
@@ -25,25 +25,22 @@
 
 		
 	// echo "<label> <b> ID: </b> </label>".$req['id'].'<br />';
-	echo "<label> <b> RequestContent: </b> </label></br>".$req['content'].'<br />';
+	echo "<label style='color:orange'> <b> RequestContent : </b> </label>".$req['content'].'<br />';
 
 
 
 	// echo "<label> <b> User: </b> </label>".$req['user_id'].'<br />';
-	// echo "<label> <b> From : </b> </label>";
-	// // foreach ($this->uname as  $value) 
-	// // 	{
-	// // 		echo $value;
-	// // 	}
+	echo "<label> <b> From : </b> </label>".$req['name'].'<br />';
+	
 	
 	echo "<hr>";
 
 	
 		
 	}
-	echo "<h3> Add new material and course  : </h3>";
+	echo "<h3> <b>Add new material and course  </b></h3>";
 	echo "<a href='".$this->baseUrl()."/material/upload/'> Newmaterial </a>";
-	echo "<a href='".$this->baseUrl()."/courses/crud/'> Newcourse </a>";
+	echo "<a style='margin-left:100px'href='".$this->baseUrl()."/courses/crud/'> Newcourse </a>";
 
 	// echo $this->material;
 

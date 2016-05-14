@@ -91,7 +91,7 @@ class Application_Form_Regist extends Zend_Form
 
 	//Add elements to form
 
-	$this->addElements(array($id,$username,$email, $password,$gender,$rule, $signature,$image, $signature,$submit));
+	$this->addElements(array($id,$username,$email, $password,$gender,$image, $signature,$submit));
 
 
     }
