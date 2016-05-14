@@ -36,8 +36,8 @@ class Application_Form_Material extends Zend_Form
         $file = new Zend_Form_Element_File('file');
         $file->setLabel('File to upload:')
             ->setRequired(true)
-            // ->setDestination(APPLICATION_PATH .'/../public/upload/material')
-            ->setDestination('/var/www/html/site/public/upload/material')
+            ->setDestination(APPLICATION_PATH .'/../public/upload/material')
+            // ->setDestination('/var/www/html/site/public/upload/material')
             ->addValidator('NotEmpty')
             ->addValidator('Count', false, 1);
         $this->addElement($file);

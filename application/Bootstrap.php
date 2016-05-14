@@ -46,15 +46,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/morris.min.js');//admin
 		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/morris-data.js');//admin
 
-		$view->headLink()->prependStylesheet('http://localhost/SLMS_zend/public/css/bootstrap.min.css');
+		$view->headLink()->prependStylesheet('/Zend/SLMS_project/public/css/bootstrap.min.css');
 		// Set the initial JS to load:
-		$view->headScript()->prependFile('http://localhost/SLMS_zend/public/js/bootstrap.min.js');
-		$view->headScript()->prependFile('http://localhost/SLMS_zend/public/js/bootstrap.js');
+		$view->headScript()->prependFile('/Zend/SLMS_project/public/js/bootstrap.min.js');
+		$view->headScript()->prependFile('/Zend/SLMS_project/public/js/bootstrap.js');
 
 
-		$view->headScript()->prependFile('http://localhost/SLMS_zend/public/js/jquery-1.12.0.min.js');
-		$view->headScript()->prependFile('/SLMS_zend/public/js/jquery-1.11.3.min.js');
-		$view->headScript()->prependFile('/SLMS_zend/public/js/jquery-1.11.0.min.js');
+		$view->headScript()->prependFile('/Zend/SLMS_project/public/js/jquery-1.12.0.min.js');
+		$view->headScript()->prependFile('/Zend/SLMS_project/public/js/jquery-1.11.3.min.js');
+		$view->headScript()->prependFile('/Zend/SLMS_project/public/js/jquery-1.11.0.min.js');
 		// $view->headScript()->prependFile('/SLMS_zend/public/js/slider.js');
    	
 	 }
