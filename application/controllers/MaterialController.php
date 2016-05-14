@@ -39,6 +39,31 @@ class MaterialController extends Zend_Controller_Action
     {
         return $this->fetchAll($this->select()->where('course_id=?',$id))->toArray();
     }
+    public function uploadvedioAction(){
+        $form = new Application_Form_Materialvedio ();
+        $form->setAction($this->view->url());
+        $request = $this->getRequest();
+        if (!$request->isPost()) 
+        {
+            $this->view->form = $form;
+            return;
+        }
+        if($this->getRequest()->isPost()){
+        if($form->isValid($this->getRequest()->getParams())){
+            // $form->file->receive();
+        $data = $form->getValues();        
+        if ($this->model->uploadMaterial($data))
+        $this->redirect('material/index');      
+        
+    }
+
+    }
+   
+    $this->view->form = $form;
+    
+    }
+
+    
     public function editAction()
     {
         // $this->_helper->layout()->disableLayout(); 
@@ -68,47 +93,18 @@ class MaterialController extends Zend_Controller_Action
             return;
         }
         
+        if($this->getRequest()->isPost())
+        {
+            if($form->isValid($this->getRequest()->getParams())){
+                $form->file->receive();
+                $data = $form->getValues();        
+                if ($this->model->uploadMaterial($data))
+                    $this->redirect('material/index');
+                    // $this->redirect("https://www.youtube.com/watch?v=kEpOv49P6Yg");      
         
-
-        // try 
-        // {
-        //     $form->file->receive();
-        //     //upload complete!
-        //     //...what now?
-        //     $file_name = $form->file->getFileName();
-        //     $data = $form->getValues();
-        //       $this->model->uploadMaterial($data);
-              
-
-        //     // var_dump($data);
-        //      // if ($this->model->uploadMaterial($data))
-        //      //     $this->redirect('material/index');
-        //     // if($form->isValid($this->getRequest()->getParams()))
-        //     // {
-        //     //     $data = $form->getValues();        
-        //     //     // if ($this->model->uploadMaterial($data))
-        //     //     //  // $this->redirect('material/index');
-        //     //         var_dump($data);
-        //     // }
-            
-        // // var_dump($form->file->getFileInfo());
-        // } catch (Exception $exception) {
-        // //error uploading file
-        // $this->view->form = $form;
-        // }
-        if($this->getRequest()->isPost()){
-        if($form->isValid($this->getRequest()->getParams())){
-            $form->file->receive();
-        $data = $form->getValues();        
-        if ($this->model->uploadMaterial($data))
-        $this->redirect('material/index');
-        
-        
-    }
-
-    }
-   
-    $this->view->form = $form;
+            }
+        }   
+        $this->view->form = $form;
     
     }
         
