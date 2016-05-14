@@ -130,7 +130,7 @@ $this->headLink()->prependStylesheet("/SLMS_zend/public/css/morris.css");//admin
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav" style="margin-left: -225px;">
             <li class="active">
-                <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Statistics</a>
+                <a href="<?=$this->baseUrl()?>/users/index"><i class="fa fa-fw fa-dashboard"></i> Users</a>
             </li>
             <li>
                 <a href="<?=$this->baseUrl()?>/categories/crud"><i class="fa fa-fw fa-table"></i> Categories</a>

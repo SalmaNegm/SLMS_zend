@@ -46,7 +46,7 @@ class RequestsController extends Zend_Controller_Action
 	    	// 	// echo $user[0]['name'];
 	    	// 	array_push($names, $user[0]['name']);
 	    	// }
-	    	// // var_dump($names);
+	    	// var_dump($requests);
 
 	    
 	        // $this -> view -> uname = $names;

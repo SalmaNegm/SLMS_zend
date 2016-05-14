@@ -8,11 +8,11 @@ class Application_Model_DbTable_Comment extends Zend_Db_Table_Abstract
 		return $this->fetchAll()->toArray();
 	}
 
-	function addComment($commentInfo){
+	function addComment($commentInfo,$material_id){
 		$row = $this->createRow();
 		$row->content = $commentInfo['content'];
 		$row->publish_date = new Zend_Db_Expr('NOW()');
-		$row->material_id = 1;
+		$row->material_id = $material_id;
 		$row->user_id = 2;
 		return $row->save();
 	}

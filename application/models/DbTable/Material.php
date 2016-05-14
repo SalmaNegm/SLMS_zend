@@ -25,6 +25,10 @@ class Application_Model_DbTable_Material extends Zend_Db_Table_Abstract
 	function listMaterial(){
 		return $this->fetchAll()->toArray();
 	}
+	function listByCourseId($id)
+	{
+		return $this->fetchAll($this->select()->where('course_id=?',$id))->toArray();
+	}
 	function deleteMaterial($id){
 		return $this->delete('id='.$id);
 	}
@@ -37,9 +41,22 @@ class Application_Model_DbTable_Material extends Zend_Db_Table_Abstract
 		$material=array($action=>$download);
 		$this->update($material,"id=$id");
 	}
-	function updateMaterial($no_download,$id){
- 		$this->update("id=".$id,"no_downloads=".$no_download);
+	function updateMaterial($id,$no_download){
+		// echo $no_download;die();
+		$data = array( 
+			'no_downloads' => $no_download
+
+			);
+		$where = $this->getAdapter()->quoteInto('id = ?', $id);
+		$this->update($data, $where);
+
+		// $material=$this->fetchRow('id='.$id,1);
+		// $material->no_downloads+=1;
+		// return $material->save();
+
+ 	
  	}
+
  	function getMaterialByCourseMaterial($course_id,$material_type_id){
  		return $this->fetchAll($this->select()
  			->where('course_id=?',$course_id)

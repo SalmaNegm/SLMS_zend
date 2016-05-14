@@ -24,19 +24,22 @@ class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
 	$row->email = $userInfo['email'];
 	$row->type = 0;
 	$row->gender = $userInfo['gender'];
-
+	// $row->role = $userInfo['role'];
 
 
 	$row->password = md5($userInfo['password']);
 	$row->signature=$userInfo['signature'];
 	$row->image=$userInfo['image'];
 
-
-
 	return $row->save();
 	}
-        function editUser($userInfo,$id){
-            $this->update($userInfo,"id=$id");
+
+
+
+    function editUser($userInfo,$id){
+
+         $this->update($userInfo,"id=$id");
+         
     }
 
 

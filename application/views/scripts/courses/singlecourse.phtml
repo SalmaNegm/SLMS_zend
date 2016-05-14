@@ -1,21 +1,100 @@
-<?php 
-echo "<label> name: </label>".$this->course[0]['name'].'<br />';
-    echo "<label> description: </label>".$this->course[0]['description'].'<br />';
-    echo "<img src='".$this->baseUrl()."/upload/courses/".$this->course[0]['image']."'/><br>";
 
-    echo "<table class='table table-striped' id='materials'><tr><th>material</th><th>view</th><th>download</th></tr>";
-    foreach ($this->materials as $material){
-    echo "<tr>";
-    echo "<td><a  href='".$this->baseUrl()."/material/single/id/".$material['id']."'> ".$material['name']. "</a></td>";
-    echo "<td>";
-    if ($material['is_show']){
-        echo "<a  class='btn btn-primary' href='".$this->baseUrl()."/material/view/id/".$material['id']."'>  view  </a>";
-    }
-    echo "</td>";
-    echo "<td>";
-    if ($material['is_download']){
-        echo "<a  class='btn btn-success' href='".$this->baseUrl()."/material/download/id/".$material['id']."'>  download  </a>";
-    }
-    echo "</td>";
-    }
-    echo "</table>";
+
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/font-awesome.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_style.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/templatemo_misc.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/flexslider.css">
+    <link rel="stylesheet" href="<?=$this->baseUrl()?>/css/testimonails-slider.css">
+    <script src="<?=$this->baseUrl()?>/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+        
+        <!-- *************************CATEGORY DATA*************************** -->
+    <div id="product-post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-sm-offset-1">
+                        <h1><?=$this->course[0]['name']?></h1> 
+                    </div>
+                </div>
+            </div>
+            <div id="single-blog" class="page-section first-section col-sm-offset-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="product-item col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="product-content">
+                                        <!-- <div class="product-title">-->
+                                             <div class="blog-thumb">
+                                             <?php
+                                        echo "<img   src='".$this->baseUrl()."/upload/courses/".$this->course[0]['image']."'/><br>";?>
+
+                                        
+                                    <!-- </div>"subtitle">4 comments</span> -->
+                                        </div> 
+                                        <h3><?=$this->course[0]['description']?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- *************************END CATEGORY DATA************************** -->
+        <!-- ***************************COURSES LIST***************************** -->
+
+            <div id="latest-blog">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                                <h2>Material List</h2>
+                                <img src="<?= $this->baseUrl() ?>/images/temp/under-heading.png" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">    
+                    <?php
+                        echo "<table class='table table-striped' id='materials'><tr><th>material</th><th>view</th><th>download</th></tr>";
+                        foreach ($this->materials as $material){
+                            echo "<tr>";
+                            echo "<td><b><a  href='".$this->baseUrl()."/material/single/material_id/".$material['id']."'> ".$material['name']. "</a></b></td>";
+                            echo "<td>";
+                            if ($material['is_show']){
+                                echo "<a  class='btn btn-primary' href='".$this->baseUrl()."/material/view/material_id/".$material['id']."'>  view  </a>";
+                            }
+                            echo "</td>";
+                            echo "<td>";
+                            if ($material['is_download']){
+                                echo "<a  class='btn btn-success' href='".$this->baseUrl()."/material/download/material_id/".$material['id']."'>  download  </a>";
+                            }
+                            echo "</td>";
+                            }
+                            echo "</table>";
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ***************************END COURSES LIST*************************** -->
+
+
+<script src="<?=$this->baseUrl()?>/js/jquery-1.11.0.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/jquery.gmap3.min.js"></script>
+<script src="<?=$this->baseUrl()?>/js/plugins.js"></script>
+<script src="<?=$this->baseUrl()?>/js/main.js"></script> <!-- images motion -->
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,13 @@ class Application_Model_DbTable_Request extends Zend_Db_Table_Abstract
 
     function listRequests()
     {
-		return $this->fetchAll()->toArray();
+		// return $this->fetchAll()->toArray();
+
+		$select=$this->select('*')
+                ->setIntegrityCheck(false)
+                
+                ->join('users','users.id = requests.user_id',array('name','user_id'=>'id'));
+        return $this->fetchAll($select)->toArray();
 	}
 
 	function getRequestById($id)
@@ -29,7 +35,14 @@ class Application_Model_DbTable_Request extends Zend_Db_Table_Abstract
 
 	function isRequestRead()
 	{
-		return $this->fetchAll($this->select()->where('is_read=0'));
+		// return $this->fetchAll($this->select()->where('is_read=0'));
+
+		$select=$this->select('*')
+                ->setIntegrityCheck(false)
+                ->where('requests.is_read=0')
+               
+                ->join('users','users.id = requests.user_id',array('name','user_id'=>'id'));
+        return $this->fetchAll($select)->toArray();
 	}
 
 

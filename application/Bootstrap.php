@@ -9,6 +9,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             $front->setRequest($request);
         }
 
+
+	protected function _initSession(){
+		Zend_Session::start();
+		$session = new Zend_Session_Namespace( 'Zend_Auth' );
+		$session->setExpirationSeconds( 1800 );
+	}
+
 	protected function _initPlaceholders()
 	{
 		$this->bootstrap('View');
@@ -21,7 +28,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// Set the initial title and separator:
 		$view->headTitle('SLMS')->setSeparator(' :: ');
 		// Set the initial stylesheet:
-		
+
 
     	$view->headLink()->prependStylesheet($view->baseUrl()."/css/font-awesome.css");//client
     	$view->headLink()->prependStylesheet($view->baseUrl()."/css/templatemo_style.css");//client
@@ -37,6 +44,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	$view->headLink()->prependStylesheet($view->baseUrl()."/css/morris.css");//admin
     	$view->headLink()->prependStylesheet($view->baseUrl()."/css/font-awesome.min.css");//admin
 
+		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/modernizr-2.6.1-respond-1.1.0.min.js');//client
+		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/jquery-1.11.0.min.js');//client
+		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/jquery.gmap3.min.js');//client
+		$view->headScript()->prependFile($view->baseUrl().'/js/plugins.js');//client
+		// $view->headScript()->prependFile('http://localhost/Zend/SLMS_project/public/js/main.js');//client
 
 
 		// Set the initial JS to load:

@@ -24,6 +24,7 @@
       <formsDirectory enabled="false">
         <formFile formName="Course"/>
         <formFile formName="Regist"/>
+        <formFile formName="Edit"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
