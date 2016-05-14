@@ -19,22 +19,16 @@ class MaterialController extends Zend_Controller_Action
     }
     public function downloadAction()
     {
-        $material_id = $this->getRequest()->getParam('material_id');
-        // $id=1;
+
+        $material_id = $this->getRequest()->getParam('material_id');       
         $material = $this->model->getMaterialById($material_id);
-        // echo "<pre>";
-        // var_dump($material);
-        // echo "</pre>";
-        // die;
         $material[0]['no_downloads']+=1;
-        // echo $material[0]['no_downloads'] ;
-        // die();
         $no_downloads=$material[0]['no_downloads'];
         $this->model->updateMaterial($id,$no_downloads);
         $file_ex= explode(".",$material[0]['name']);
         header('Content-type: application/'.$file_ex[1]);
         header("Content-Disposition: attachment; filename='".$material[0]['name']."'"); 
-        readfile('/var/www/html/SLMS_zend/public/upload/material/'.$material[0]['name']);
+        readfile(APPLICATION_PATH .'/../public/upload/material/'.$material[0]['name']);
         $this->view->layout()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
 
@@ -46,8 +40,13 @@ class MaterialController extends Zend_Controller_Action
     public function deleteAction()
     {
         $id = $this->getRequest()->getParam('id');
-        if($this->model-> deleteMaterial($id))
-            $this->redirect('material/index');
+        $material=$this->model->getMaterialById($id);
+        $r=$this->model-> deleteMaterial($id);
+            if($r)
+            {
+                unlink(APPLICATION_PATH.'/../public/upload/material/'.$material[0]['name']);                               
+                $this->redirect('material/index');               
+            }
     }
     public function editAction()
     {
@@ -76,49 +75,17 @@ class MaterialController extends Zend_Controller_Action
         {
             $this->view->form = $form;
             return;
-        }
-        
-        
-
-        // try 
-        // {
-        //     $form->file->receive();
-        //     //upload complete!
-        //     //...what now?
-        //     $file_name = $form->file->getFileName();
-        //     $data = $form->getValues();
-        //       $this->model->uploadMaterial($data);
-              
-
-        //     // var_dump($data);
-        //      // if ($this->model->uploadMaterial($data))
-        //      //     $this->redirect('material/index');
-        //     // if($form->isValid($this->getRequest()->getParams()))
-        //     // {
-        //     //     $data = $form->getValues();        
-        //     //     // if ($this->model->uploadMaterial($data))
-        //     //     //  // $this->redirect('material/index');
-        //     //         var_dump($data);
-        //     // }
-            
-        // // var_dump($form->file->getFileInfo());
-        // } catch (Exception $exception) {
-        // //error uploading file
-        // $this->view->form = $form;
-        // }
+        }               
         if($this->getRequest()->isPost()){
-        if($form->isValid($this->getRequest()->getParams())){
-            $form->file->receive();
-        $data = $form->getValues();        
-        if ($this->model->uploadMaterial($data))
-        $this->redirect('material/index');
-        
-        
-    }
-
-    }
+            if($form->isValid($this->getRequest()->getParams())){
+                $form->file->receive();
+                $data = $form->getValues();        
+                if ($this->model->uploadMaterial($data))
+                    $this->redirect('material/index');  
+            }   
+        }
    
-    $this->view->form = $form;
+        $this->view->form = $form;
     
     }
     public function singleAction()

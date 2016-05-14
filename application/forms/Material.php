@@ -23,7 +23,7 @@ class Application_Form_Material extends Zend_Form
         }
         $this->addElement($selectType);
 
-        $description = new Zend_Form_Element_Text('description');
+        $description = new Zend_Form_Element_Textarea('description');
         $description->setAttribs(array('class'=>'form-control','rows'=>'5'));
         $description->setLabel('Description')
             ->setRequired(true)
@@ -37,11 +37,10 @@ class Application_Form_Material extends Zend_Form
         $file->setLabel('File to upload:')
             ->setRequired(true)
             ->setDestination(APPLICATION_PATH .'/../public/upload/material')
-            // ->setDestination('/var/www/html/site/public/upload/material')
             ->addValidator('NotEmpty')
             ->addValidator('Count', false, 1)
             ->addValidator('Size', false, 10485760) //10MB = 10,485,760 bytes
-            ->setMaxFileSize(2097152);
+            ->setMaxFileSize(3097152);
         $this->addElement($file);
 
         $is_download= new Zend_Form_Element_Checkbox('is_download', array(
