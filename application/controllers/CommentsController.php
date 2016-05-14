@@ -25,10 +25,11 @@ class CommentsController extends Zend_Controller_Action
         // $auth =Zend_Auth::getInstance()->getStorage()->read();
         // $user_id=$auth->id;
         // echo $user_id;
+        $material_id = $this->getRequest()->getParam('id');
 		if($this->getRequest()->isPost()){
 			if($form->isValid($this->getRequest()->getParams())){
 				$data = $form->getValues();
-				if ($this->model->addComment($data)){
+				if ($this->model->addComment($data,$material_id)){
 
 					$this->redirect('material/single');
                 }
@@ -43,14 +44,17 @@ class CommentsController extends Zend_Controller_Action
         // action body
         $this->layout->setlayout('client');
         $id = $this->getRequest()->getParam('id');
+        $material_id = $this->getRequest()->getParam('material_id');
+
 		if($this->model->deleteComment($id))
-			$this->redirect('material/single');
+			$this->redirect('material/single/material_id/'.$material_id);
     }
 
     public function editAction()
     {
         $this->layout->setlayout('client');
        $id = $this->getRequest()->getParam('id');
+        $material_id = $this->getRequest()->getParam('material_id');
 		$comment = $this->model->getCommentById($id);
 		$form = new Application_Form_Comment();
 		$form->populate($comment[0]);
@@ -59,7 +63,7 @@ class CommentsController extends Zend_Controller_Action
 				$data = $form->getValues();
 
 				$this->model->editComment($id,$data);	
-                $this->redirect('material/single');
+                $this->redirect('material/single/material_id/'.$material_id);
 
 			}
 		}

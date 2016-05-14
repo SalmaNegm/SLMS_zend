@@ -6,7 +6,7 @@ echo "<label> name: </label>".$this->course[0]['name'].'<br />';
     echo "<table class='table table-striped' id='materials'><tr><th>material</th><th>view</th><th>download</th></tr>";
     foreach ($this->materials as $material){
     echo "<tr>";
-    echo "<td><a  href='".$this->baseUrl()."/material/single/id/".$material['id']."'> ".$material['name']. "</a></td>";
+    echo "<td><a  href='".$this->baseUrl()."/material/single/id/".$material['id']."'> ".$material['name']. "</a>downloas</td>";
     echo "<td>";
     if ($material['is_show']){
         echo "<a  class='btn btn-primary' href='".$this->baseUrl()."/material/view/id/".$material['id']."'>  view  </a>";

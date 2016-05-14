@@ -11,7 +11,7 @@ class Application_Form_Comment extends Zend_Form
 
 	
 		$content->setAttrib('class', 'form-control');
-		 $content->setAttrib ( 'placeholder', 'Add Comment' );
+		$content->setAttrib ( 'placeholder', 'Add Comment' );
 
 
 		// $publish_date = new Zend_Date();
@@ -19,7 +19,7 @@ class Application_Form_Comment extends Zend_Form
 		// $publish_date->setLabel('publish_date');
 		// $publish_date->setAttrib('class', 'form-control');
 		
-	 	$id = new Zend_Form_Element_Hidden('id');
+	 	$id = new Zend_Form_Element_Hidden('material_id');
 		
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit->setAttrib('class', 'btn btn-primary');
