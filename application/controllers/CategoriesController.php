@@ -6,97 +6,63 @@ class CategoriesController extends Zend_Controller_Action
 	private $model;
 	public function init() {
         $this->model = new Application_Model_DbTable_Category();
-        $authorization = Zend_Auth::getInstance();
-        if (!$authorization->hasIdentity()) {
-            $this->redirect('users/login');
-        }
+        // $authorization = Zend_Auth::getInstance();
+        // if (!$authorization->hasIdentity()) {
+        //     $this->redirect('users/login');
+        // }
+        $this->form = new Application_Form_Category();
+        $this->layout = $this->_helper->layout();
         /* Initialize action controller here */
     }
 
     public function indexAction() {
-        $this->view->categories = $this->model->listcategories();
+        // $this->view->categories = $this->model->listcategories();
         //Show Comments
     }
-
+    #/public/categories/delete/id/2
     public function deleteAction() {
-        $id = $this->getRequest()->getParam('id');
-        if ($this->model->deletecategory($id)) {
-            $this->redirect('categories/index');
-        }
+        $id=$this->getRequest()->getParam('id');
+        $course=$this->model->getCategoryById($id);
+        if($this->model->deleteCategory($id))
+            {
+                $this->redirect('categories/crud');               
+            }
     }
-
-//     public function showAction() {
-
-//         //Get a single post//
-
-//         $this->view->onecategory = $this->model->getPostById($this->getRequest()->getParam('id'));
-
-//         //Get post Comments//
-
-//         $this->model1 = new Application_Model_DbTable_Comment();
-//         $id = $this->getRequest()->getParam('id');
-//         $this->view->comments = $this->model1->getCommentsById($id);
-
-//         /*         * *****Comment Form********** */
-
-//         $form = new Application_Form_Comment();
-//         //$values = $this->getRequest()->getParams();
-//         if ($this->getRequest()->isPost()) {
-//             if ($form->isValid($this->getRequest()->getParams())) {
-//                 $data = $form->getValues();
-//                 $id = Zend_Auth::getInstance()->getStorage()->read()->id;
-//                 if ($this->model1->addComment($data, $id)) {
-// //                    $this->redirect('posts/index');
-//                 }
-//             }
-//         }
-//         //$form->removeElement('submit');
-//         $this->view->form = $form;
-//     }
-
-//     function logoutAction() {
-//         $auth=Zend_Auth::getInstance()->clearIdentity();
-//         $this->redirect('users/login');
-//     }
-
-    function editAction() {
-        $id = $this->getRequest()->getParam('id');
-        $post = $this->model->getPostById($id);
-        $form = new Application_Form_Category();
-        $form->populate($category[0]);
-        //$values = $this->getRequest()->getParams();
-        if ($this->getRequest()->isPost()) {
-            if ($form->isValid($this->getRequest()->getParams())) {
-                $data = $form->getValues();
-
-                $this->model->editcategory($data, $id);
+    #/public/categories/crud
+    public function crudAction()
+    {
+        if($this->getRequest()->isPost())
+        {
+            if($this->form->isValid($this->getRequest()->getParams()))
+            {
+                $data=$this->form->getValues();
+                if($this->model->addCategory($data))
+                    {
+                        $this->redirect('categories/crud');
+                    }
             }
         }
-        //$form->removeElement('submit');
-        $this->view->form = $form;
-        $this->render('add');
+        $this->view->categories=$this->model->listCategories();
+        $this->view->form=$this->form;
     }
-
-    public function addAction() {
-
-        $form = new Application_Form_Category();
-        //$values = $this->getRequest()->getParams();
-        if ($this->getRequest()->isPost()) {
-            if ($form->isValid($this->getRequest()->getParams())) {
-                $data = $form->getValues();
-//                var_dump(Zend_Auth::getInstance()->getStorage()->read());
-                $id = Zend_Auth::getInstance()->getStorage()->read()->id;
-                if ($this->model->addPost($data, $id)) {
-                    $this->redirect('categories/index');
-                }
+    #/public/categories/edit/id/2
+    public function editAction() {
+        $id=$this->getRequest()->getParam('id');        
+        if($this->getRequest()->isPost())
+        {
+            if($this->form->isValid($this->getRequest()->getParams()))
+            {
+                $data = $this->form->getValues();
+                if (!$this->model->editCategory($id,$data))
+                {
+                    $this->redirect('categories/crud');
+                }  
             }
-        }
-        //$form->removeElement('submit');
-        $this->view->form = $form;
-        //$this->view->pass = "5";
-        //$this->redirect('index/index');
+        }   
+        $this->form->submit->setLabel('UPDATE');
+        $category=$this->model->getCategoryById($id)->toArray();
+        $this->form->populate($category);
+        $this->view->form=$this->form;
     }
-
-
 }
 

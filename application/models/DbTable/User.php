@@ -25,11 +25,10 @@ class Application_Model_DbTable_User extends Zend_Db_Table_Abstract
 	$row->type = 0;
 	$row->gender = $userInfo['gender'];
 
-
-
 	$row->password = md5($userInfo['password']);
 	$row->signature=$userInfo['signature'];
 	$row->image=$userInfo['image'];
+	// $row->role=$userinfo['type'];
 
 
 
