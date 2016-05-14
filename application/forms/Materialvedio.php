@@ -1,6 +1,7 @@
 <?php
-class Application_Form_Material extends Zend_Form
+class Application_Form_Materialvedio extends Zend_Form
 {
+  
     public function init()
     {
         $this->setAttrib('enctype', 'multipart/form-data');
@@ -30,20 +31,17 @@ class Application_Form_Material extends Zend_Form
             ->addValidator('NotEmpty');
         $this->addElement($description);
 
+        $vedio = new Zend_Form_Element_Text('file');
+        $vedio->setAttribs(array('class'=>'form-control','rows'=>'5'));
+        $vedio->setLabel(' vedio upload link')
+            ->setRequired(true)
+            ->addValidator('NotEmpty');
+        $this->addElement($vedio);
+
         $submit= new Zend_Form_Element_Submit('submit');
         $submit->setAttrib('class', 'btn btn-primary col-sm-offset-3 col-sm-5');
 
-        $file = new Zend_Form_Element_File('file');
-        $file->setLabel('File to upload:')
-            ->setRequired(true)
-            ->setDestination(APPLICATION_PATH .'/../public/upload/material')
-            // ->setDestination('/var/www/html/site/public/upload/material')
-            ->addValidator('NotEmpty')
-            ->addValidator('Count', false, 1)
-            ->addValidator('Size', false, 10485760) //10MB = 10,485,760 bytes
-            ->setMaxFileSize(2097152);
-        $this->addElement($file);
-
+        
         $is_download= new Zend_Form_Element_Checkbox('is_download', array(
         'label'=>'download',
         'uncheckedValue'=> '0', //can be removed, this is the default functionality
@@ -56,7 +54,7 @@ class Application_Form_Material extends Zend_Form
         'checkedValue' => '1'));                                                                                           
         $this->addElement($is_show);
 
-        $this->addElements(array($submit, $description ,$file,$is_download,$is_show));
+        $this->addElements(array($submit, $description ,$vedio,$is_download,$is_show));
     }
 
 }

@@ -12,8 +12,7 @@
 	echo "<table class='table table-striped'><tr><th>material</th><th>date</th><th>download</th><th>show</th><th>no_downloads</th></th><th colspan='2'>action</th></tr>";
 	foreach ($this->material as $material){
 	echo "<tr>";
-	// echo "<td>".$material['id'].'</td>';
-	echo "<td>".$material['name'].'</td>';
+	echo "<td><a  href='".$this->baseUrl()."/material/single/id/".$material['id']."'> ".$material['name']. "</a></td>";
 	echo "<td>".$material['upload_date'].'</td>';
 	echo "<td><input type='checkbox'".(($material['is_download'])? "checked=checked" : "")." name=".$material['id']. " class='is_download'  id ='is_download' value=".$material['is_download']."  ></td>";
 	echo "<td><input type='checkbox'".(($material['is_show'])? "checked=checked" : "")." name=".$material['id']. " class='is_show' id='is_show' value=".$material['is_show']."  ></td>";
@@ -22,7 +21,8 @@
 	echo "</tr>";
 	}
 	echo "</table><br/>";
-	echo "<a class='btn btn-success' href='".$this->baseUrl()."/material/upload'>  upload  </a>";
+	echo "<a class='btn btn-primary' href='".$this->baseUrl()."/material/upload'>  upload  </a>";
+	echo "<a class='btn btn-info' href='".$this->baseUrl()."/material/uploadvedio/'>  upload vedio  </a>";
 
 	?>
 	</div>

@@ -26,9 +26,10 @@ class CoursesController extends Zend_Controller_Action
     		{
     			$data=$this->form->getValues();
                 $originalFilePath=$this->form->image->getFileName();
-                $originalFilename = pathinfo($originalFilePath);
-
-                $newFilename = 'course-' . uniqid() . '.' . $originalFilename['extension'];
+                $path_arr = pathinfo($originalFilePath);
+                $newFilename = 'course-' . uniqid() . '.' . $path_arr['extension'];
+                rename($originalFilePath, $path_arr['dirname'].'/'.$newFilename);
+                $data['image']=$newFilename;
     			if($this->model->addCourse($data))
     				{
                         $this->redirect('courses/crud');
@@ -49,11 +50,16 @@ class CoursesController extends Zend_Controller_Action
 			{
 				$data = $this->form->getValues();
                 $course=$this->model->courseById($id);
+                $originalFilePath=$this->form->image->getFileName();
+                $path_arr = pathinfo($originalFilePath);
+                $newFilename = 'course-' . uniqid() . '.' . $path_arr['extension'];
+                rename($originalFilePath, $path_arr['dirname'].'/'.$newFilename);
+                $data['image']=$newFilename;
 				if ($this->model->edit($data,$id))
-					{
-                        unlink(APPLICATION_PATH.'/../public/upload/courses/'.$course[0]['image']);
-                        $this->redirect('courses/crud');
-                    }	
+				{
+                    unlink(APPLICATION_PATH.'/../public/upload/courses/'.$course[0]['image']);
+                    $this->redirect('courses/crud');
+                }	
 			}
     	}  	
     	$this->form->submit->setLabel('UPDATE');
@@ -90,8 +96,6 @@ class CoursesController extends Zend_Controller_Action
                 unlink(APPLICATION_PATH.'/../public/upload/courses/'.$course[0]['image']);
                 $this->redirect('courses/crud');               
             }
-        else
-            echo "nooooooooo";
     }
     #/public/courses/singlecategory/catId/2
     public function singlecategoryAction()

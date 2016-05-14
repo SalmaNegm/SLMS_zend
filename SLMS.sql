@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 07, 2016 at 09:34 PM
+-- Generation Time: May 14, 2016 at 12:31 AM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.16
 
@@ -32,7 +32,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `description` varchar(500) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`) VALUES
+(1, 'cat1', 'cat1 desc');
 
 -- --------------------------------------------------------
 
@@ -67,8 +74,17 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `category_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `name` (`name`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `name`, `description`, `image`, `category_id`) VALUES
+(57, 'course1', 'course1 desc', 'course-57363193dd076.jpg', 1),
+(58, 'course2', 'course2 desc', 'course-573637083857f.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +134,15 @@ CREATE TABLE IF NOT EXISTS `materials_type` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `materials_type`
+--
+
+INSERT INTO `materials_type` (`id`, `name`) VALUES
+(1, 'material type1'),
+(2, 'material type2');
 
 -- --------------------------------------------------------
 
@@ -151,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `requests` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
-  `gender` tinyint(1) NOT NULL,
+  `gender` text NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` char(32) NOT NULL,
   `type` tinyint(1) NOT NULL,
@@ -161,7 +185,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `gender`, `email`, `password`, `type`, `signature`, `image`, `is_banned`) VALUES
+(1, 'salma', '1', 'salma@email.com', 'f6852b2a3ac0cd7e69c801f69eddb57a', 1, 'salma sig', 'salma image', 0);
 
 --
 -- Constraints for dumped tables
