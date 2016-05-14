@@ -15,12 +15,12 @@ class MaterialController extends Zend_Controller_Action
     }
     public function downloadAction()
     {
-        $id = $this->getRequest()->getParam('id');
+        $id = $this->getRequest()->getParam('material_id');
         $material = $this->model->getMaterialById($id);
         $file_ex= explode(".",$material[0]['name']);
         header('Content-type: application/'.$file_ex[1]);
         header("Content-Disposition: attachment; filename='".$material[0]['name']."'"); 
-        readfile('/var/www/html/SLMS_zend/public/upload/material/'.$material[0]['name']);
+        readfile(APPLICATION_PATH .'/../public/upload/material/'.$material[0]['name']);
         $this->view->layout()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
 
@@ -32,8 +32,13 @@ class MaterialController extends Zend_Controller_Action
     public function deleteAction()
     {
         $id = $this->getRequest()->getParam('id');
-        if($this->model-> deleteMaterial($id))
-            $this->redirect('material/index');
+        $material=$this->model->getMaterialById($id);
+        $r=$this->model-> deleteMaterial($id);
+            if($r)
+            {
+                unlink(APPLICATION_PATH.'/../public/upload/material/'.$material[0]['name']);                               
+                $this->redirect('material/index');               
+            }
     }
     function listByCourseId($id)
     {
