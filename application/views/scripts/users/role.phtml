@@ -16,9 +16,8 @@
 <br /><br />
 <div id="page-wrapper" class="col-lg-10 col-md-8 col-sm-6">
 
-
 	<?php		
-	echo "<table class='table  table-striped'><tr><th>Photo</th><th>Name</th><th>signature</th><th>E-mail</th><th>gender</th></th><th>Type</th><th>is_admin</th><th>is_ban</th><th>Delete</th></tr>";
+	echo "<table class='table  table-striped'><tr><th>Photo</th><th>Name</th><th>signature</th><th>E-mail</th><th>gender</th></th><th>Type</th><th>Update</th><th>Delete</th></tr>";
 
 
 
@@ -28,16 +27,31 @@
 			echo "<img src='".$this->baseUrl().'/upload/'.$user['image']."' class= 'tales'>";
 
 			
-			echo "<td>".$user['name'].'</td>';
-			echo "<td>".$user['signature'].'</td>';
+			echo "</td><td>".$user['name'].'</td><td>';
 
-			echo "<td>".$user['email'].'</td>';
-			echo "<td>".$user['gender'].'</td>';
+				if($user['type'] == 0)
+				{
+					$type = "user";
+				}
+				else
+				{
+					$type = "admin";
+				}
 
-			echo "<td>".$user['type'].'</td>';
 
-			echo "<td><a class='btn btn-success' href='".$this->baseUrl()."/users/role/id/".$user['id']."'>Update</a></td>";
-			echo "<td><a class='btn btn-danger' href='".$this->baseUrl()."/users/delete/id/".$user['id']."'>Delete</a></td>";
+
+	    echo "<a href='".$this->baseUrl()."/users/role/id/".$user['id']."'> ".$type."</a> <br />";
+
+
+			// echo "<td>".$user['signature'].'</td>';
+
+			// echo "<td>".$user['email'].'</td>';
+			// echo "<td>".$user['gender'].'</td>';
+
+			// echo "<td>".$user['type'].'</td>';
+
+			// echo "<td><a class='btn btn-success' href='".$this->baseUrl()."/users/role/id/".$user['id']."'>Update</a></td>";
+			// echo "<td><a class='btn btn-danger' href='".$this->baseUrl()."/users/delete/id/".$user['id']."'>Delete</a></td>";
 
 			echo "</tr>";
 
